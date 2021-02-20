@@ -10,7 +10,12 @@ function ProductList(props) {
 	return (
 		<section className="grid grid-cols-1 sm:grid-cols-3 gap-4">
 			{productList.map((product, index) => (
-				<LazyLoad key={index} height={100} offset={100}>
+				<LazyLoad
+					key={index}
+					height={100}
+					offset={[-100, 100]}
+					placeholder={<Loading />}
+				>
 					<ProductItem key={index} product={product} />
 				</LazyLoad>
 			))}
