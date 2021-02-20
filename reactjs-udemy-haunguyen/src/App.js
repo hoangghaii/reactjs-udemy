@@ -1,0 +1,66 @@
+import { React } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Header from "./components/Header/Header";
+import Album from "./features/Albums/Album";
+import Product from "./features/Product/Product";
+// import { useRandomColor } from "./hooks/RandomColor";
+// import { useClock } from "./hooks/Clock";
+import Todo from "./features/Todo/Todo";
+import ProductCard from "./features/Product/components/ProductCard/ProductCard";
+
+function App() {
+	// const name = "Hai";
+	// const age = 18;
+	// const isMale = true;
+	// const student = {
+	// 	name: "Easy FrontEnd",
+	// };
+	// const colorList = ["red", "green", "blue"];
+	// let color = useRandomColor();
+	// let time = useClock();
+
+	return (
+		<div className="">
+			<Router>
+				{/* <header className="App-header">
+					<img src={logo} className="App-logo" alt="logo" />
+					<p>
+						Edit <code>src/App.js</code> and save to reload.
+					</p>
+					<p>
+						Xin chao {name}-{age}-{isMale ? "Male" : "Female"}
+					</p>
+	
+					{isMale ? <p>Male</p> : <p>Female</p>}
+	
+					{isMale && (
+						<>
+							<p>Male 1</p>
+							<p>Male 2</p>
+							<p>Male 3</p>
+						</>
+					)}
+	
+					<ul>
+						{colorList.map((color, index) => (
+							<li key={index}>{color}</li>
+						))}
+					</ul>
+	
+					<p>{student.name}</p>
+				</header> */}
+				<Header />
+				<Switch>
+					<Route path="/todo" component={Todo} />
+					<Route exact path="/product" component={Product} />
+					<Route path="/product/:id" component={ProductCard} />
+					<Route path="/album" component={Album} />
+					<Route exact path="/" component={Album} />
+				</Switch>
+				Footer
+			</Router>
+		</div>
+	);
+}
+
+export default App;
