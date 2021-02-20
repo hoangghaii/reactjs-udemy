@@ -5,22 +5,23 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./SearchForm.scss";
 
 function SearchForm(props) {
-	const { handleSearch } = props;
+	const { handleSearch, dataList } = props;
 	const [value, setValue] = useState("");
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
 		if (!handleSearch) return;
+		if (!dataList) return;
 
-		handleSearch(value);
+		handleSearch(dataList, value);
 	};
 
 	return (
 		<div className="relative p-8 w-96">
 			<form
 				className="bg-white flex items-center rounded-full shadow-xl"
-				onSubmit={handleSubmit}
+				onChange={handleSubmit}
 			>
 				<input
 					className="rounded-full w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none"
@@ -47,6 +48,7 @@ function SearchForm(props) {
 
 SearchForm.propTypes = {
 	handleSearch: PropTypes.func,
+	dataList: PropTypes.any.isRequired,
 };
 
 SearchForm.defaultProps = {

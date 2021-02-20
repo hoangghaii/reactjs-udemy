@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React from "react";
 import LazyLoad from "react-lazyload";
 import { Link } from "react-router-dom";
-import Loading from "./../../../../components/Loading/Loading";
 import "./ProductItem.scss";
 
 function ProductItem(props) {

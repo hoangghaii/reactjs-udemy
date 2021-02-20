@@ -1,10 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useAxiosGet } from "../../hooks/HttpRequests";
 import Loading from "./../../components/Loading/Loading";
-import SearchForm from "./../../components/SearchForm/SearchForm";
+import Pagination from "./../../components/Pagination/Pagination";
 import { environment } from "./../../environment/environment";
 import ProductList from "./components/ProductList/ProductList";
-import Pagination from "./../../components/Pagination/BreakView/BreakView";
 
 function Product() {
 	const url = environment.BASE_URL;
@@ -32,30 +31,6 @@ function Product() {
 		setTotalPages(totalPages);
 	};
 
-	/** ================= Search ================= */
-	// const [searchList, setSearchList] = useState([]);
-	// useEffect(() => {
-	// 	setSearchList(dataRespond.data);
-	// }, [dataRespond]);
-
-	const getSearchList = (searchText) => {
-		return dataRespond.data.filter(
-			(item) =>
-				item.name.toLowerCase().includes(searchText.toLowerCase()) ||
-				item.description
-					.toLowerCase()
-					.includes(searchText.toLowerCase()) ||
-				item.material
-					.toLowerCase()
-					.includes(searchText.toLowerCase()) ||
-				item.price.toLowerCase().includes(searchText.toLowerCase())
-		);
-	};
-
-	const handleSearch = (value) => {
-		setCurrentPage(getSearchList(value));
-	};
-
 	if (dataRespond.loading) {
 		content = <Loading />;
 	}
@@ -73,7 +48,7 @@ function Product() {
 				<ProductList productList={currentRecord} />
 				<Pagination
 					totalRecords={totalRecords}
-					pageLimit={10}
+					pageLimit={9}
 					pageNeighbours={1}
 					onPageChanged={onPageChanged}
 				/>
@@ -93,9 +68,6 @@ function Product() {
 		<div>
 			<div>
 				<div className="">
-					{/* <div className="fixed top-12 right-0 z-2">
-						<SearchForm handleSearch={handleSearch} />
-					</div> */}
 					<main className="grid place-items-center min-h-screen bg-gradient-to-t from-blue-200 to-indigo-900 p-5">
 						<div>
 							<h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-200 mb-5 text-center">

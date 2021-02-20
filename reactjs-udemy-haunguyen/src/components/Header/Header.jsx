@@ -4,6 +4,7 @@ import MobileMenuButton from "./MobileMenuButton/MobileMenuButton";
 import MobileNavigationMenu from "./MobileNavigationMenu/MobileNavigationMenu";
 import NavigationMenu from "./NavigationMenu/NavigationMenu";
 import NotificationUser from "./NotificationUser/NotificationUser";
+import Search from "./Search/Search";
 
 function Header(props) {
 	const [openMobileMenu, setOpenMobileMenu] = useState(false);
@@ -21,6 +22,8 @@ function Header(props) {
 					/>
 
 					<NavigationMenu />
+
+					<Search />
 
 					<NotificationUser />
 				</div>
