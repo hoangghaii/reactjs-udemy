@@ -17,18 +17,14 @@ function Product() {
 		setAllRecord(dataRespond.data);
 	}, [dataRespond.data]);
 	const [currentRecord, setCurrentRecord] = useState([]);
-	const [currentPage, setCurrentPage] = useState(null);
-	const [totalPages, setTotalPages] = useState(null);
 
 	const onPageChanged = (data) => {
-		const { currentPage, totalPages, pageLimit } = data;
+		const { currentPage, pageLimit } = data;
 
 		const offset = (currentPage - 1) * pageLimit;
 		const currentRecord = allRecord.slice(offset, offset + pageLimit);
 
 		setCurrentRecord(currentRecord);
-		setCurrentPage(currentPage);
-		setTotalPages(totalPages);
 	};
 
 	if (dataRespond.loading) {
@@ -52,14 +48,6 @@ function Product() {
 					pageNeighbours={1}
 					onPageChanged={onPageChanged}
 				/>
-				<strong className="text-secondary">{totalRecords}</strong>{" "}
-				{currentPage && (
-					<span className="current-page d-inline-block h-100 pl-4 text-secondary">
-						Page{" "}
-						<span className="font-weight-bold">{currentPage}</span>{" "}
-						/ <span className="font-weight-bold">{totalPages}</span>
-					</span>
-				)}
 			</Fragment>
 		);
 	}

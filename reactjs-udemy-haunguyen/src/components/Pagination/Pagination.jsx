@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 
 const LEFT_PAGE = "LEFT";
 const RIGHT_PAGE = "RIGHT";
@@ -146,68 +146,114 @@ class Pagination extends Component {
 		const pages = this.fetchPageNumbers();
 
 		return (
-			<Fragment>
-				<nav aria-label="Countries Pagination">
-					<ul className="pagination">
+			<div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+				<div className="flex-1 flex justify-between sm:hidden">
+					<span
+						aria-label="Previous"
+						onClick={this.handleMoveLeft}
+						className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 cursor-pointer"
+					>
+						Previous
+					</span>
+					<span
+						aria-label="Next"
+						onClick={this.handleMoveRight}
+						className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 cursor-pointer"
+					>
+						Next
+					</span>
+				</div>
+				<div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+					<div>
+						<p className="text-sm text-gray-700">
+							Showing
+							<span className="font-medium"> 1 </span>
+							to
+							<span className="font-medium"> 10 </span>
+							of
+							<span className="font-medium">
+								{" "}
+								{this.totalRecords}{" "}
+							</span>
+							results
+						</p>
+					</div>
+				</div>
+				<div>
+					<nav
+						className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+						aria-label="Pagination"
+					>
 						{pages.map((page, index) => {
 							if (page === LEFT_PAGE)
 								return (
-									<li key={index} className="page-item">
-										<a
-											className="page-link"
-											href="#0"
-											aria-label="Previous"
-											onClick={this.handleMoveLeft}
+									<span
+										key={index}
+										aria-label="Previous"
+										onClick={this.handleMoveLeft}
+										className="relative inline-flex items-center px-2 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 cursor-pointer"
+									>
+										<span className="sr-only">
+											Previous
+										</span>
+										<svg
+											className="h-5 w-5 cursor-pointer"
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 20 20"
+											fill="currentColor"
+											aria-hidden="true"
 										>
-											<span aria-hidden="true">
-												&laquo;
-											</span>
-											<span className="sr-only">
-												Previous
-											</span>
-										</a>
-									</li>
+											<path
+												fillRule="evenodd"
+												d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+												clipRule="evenodd"
+											/>
+										</svg>
+									</span>
 								);
 
 							if (page === RIGHT_PAGE)
 								return (
-									<li key={index} className="page-item">
-										<a
-											className="page-link"
-											href="#0"
-											aria-label="Next"
-											onClick={this.handleMoveRight}
+									<span
+										key={index}
+										aria-label="Next"
+										onClick={this.handleMoveRight}
+										className="relative inline-flex items-center px-2 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 cursor-pointer"
+									>
+										<span className="sr-only">Next</span>
+										<svg
+											className="h-5 w-5 cursor-pointer"
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 20 20"
+											fill="currentColor"
+											aria-hidden="true"
 										>
-											<span aria-hidden="true">
-												&raquo;
-											</span>
-											<span className="sr-only">
-												Next
-											</span>
-										</a>
-									</li>
+											<path
+												fillRule="evenodd"
+												d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+												clipRule="evenodd"
+											/>
+										</svg>
+									</span>
 								);
 
 							return (
-								<li
+								<span
 									key={index}
+									onClick={this.handleClick(page)}
 									className={`page-item${
-										currentPage === page ? " active" : ""
+										currentPage === page
+											? "relative inline-flex items-center px-4 py-2 border border-blue-400 bg-blue-400 text-sm font-medium text-white hover:bg-gray-50 cursor-pointer"
+											: "relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer"
 									}`}
 								>
-									<a
-										className="page-link"
-										href="#0"
-										onClick={this.handleClick(page)}
-									>
-										{page}
-									</a>
-								</li>
+									{page}
+								</span>
 							);
 						})}
-					</ul>
-				</nav>
-			</Fragment>
+					</nav>
+				</div>
+			</div>
 		);
 	}
 }

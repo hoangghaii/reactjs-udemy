@@ -1,12 +1,13 @@
 import { React } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Album from "./features/Albums/Album";
+import ProductCard from "./features/Product/components/ProductCard/ProductCard";
 import Product from "./features/Product/Product";
 // import { useRandomColor } from "./hooks/RandomColor";
 // import { useClock } from "./hooks/Clock";
 import Todo from "./features/Todo/Todo";
-import ProductCard from "./features/Product/components/ProductCard/ProductCard";
 
 function App() {
 	// const name = "Hai";
@@ -57,7 +58,7 @@ function App() {
 					<Route path="/album" component={Album} />
 					<Route exact path="/" component={Album} />
 				</Switch>
-				Footer
+				<Footer />
 			</Router>
 		</div>
 	);
