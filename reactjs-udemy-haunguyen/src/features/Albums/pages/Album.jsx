@@ -1,5 +1,5 @@
 import React from "react";
-import AlbumList from "./components/AlbumList/AlbumList";
+import AlbumList from "./../components/AlbumList/AlbumList";
 
 function Album(props) {
 	const albumList = [

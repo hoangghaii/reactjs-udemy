@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import ToDoForm from "./components/TodoForm/ToDoForm";
-import TodoList from "./components/TodoList/TodoList";
-import TodoFilterGroup from "./components/TodoFilterGroup/TodoFilterGroup";
+import queryString from "query-string";
+import React, { useEffect, useMemo, useState } from "react";
+import { useHistory, useLocation, useRouteMatch } from "react-router-dom";
+import TodoFilterGroup from "./../components/TodoFilterGroup/TodoFilterGroup";
+import ToDoForm from "./../components/TodoForm/ToDoForm";
+import TodoList from "./../components/TodoList/TodoList";
 
 function Todo(props) {
 	const initTodoList = [
@@ -22,8 +24,20 @@ function Todo(props) {
 		},
 	];
 
+	const location = useLocation();
+	const history = useHistory();
+	const match = useRouteMatch();
+
 	const [todoList, setTodoList] = useState(initTodoList);
-	const [filteredStatus, setFilteredStatus] = useState("all");
+	const [filteredStatus, setFilteredStatus] = useState(() => {
+		const params = queryString.parse(location.search);
+		return params.status || "all";
+	});
+
+	useEffect(() => {
+		const params = queryString.parse(location.search);
+		setFilteredStatus(params.status || "all");
+	}, [location.search]);
 
 	const handleChangeStatus = (index) => {
 		//Change status of item where item.id === index
@@ -65,20 +79,40 @@ function Todo(props) {
 	};
 
 	const handleShowAll = () => {
-		setFilteredStatus("all");
+		// setFilteredStatus("all");
+
+		const queryParams = { status: "all" };
+		history.push({
+			pathname: match.path,
+			search: queryString.stringify(queryParams),
+		});
 	};
 
 	const handleShowDone = () => {
-		setFilteredStatus("done");
+		// setFilteredStatus("done");
+
+		const queryParams = { status: "done" };
+		history.push({
+			pathname: match.path,
+			search: queryString.stringify(queryParams),
+		});
 	};
 
 	const handleShowWorking = () => {
-		setFilteredStatus("working");
+		// setFilteredStatus("working");
+
+		const queryParams = { status: "working" };
+		history.push({
+			pathname: match.path,
+			search: queryString.stringify(queryParams),
+		});
 	};
 
-	const renderedList = todoList.filter(
-		(todo) => todo.status === filteredStatus || filteredStatus === "all"
-	);
+	const renderedList = useMemo(() => {
+		return todoList.filter(
+			(todo) => todo.status === filteredStatus || filteredStatus === "all"
+		);
+	}, [todoList, filteredStatus]);
 
 	return (
 		<div className="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans">

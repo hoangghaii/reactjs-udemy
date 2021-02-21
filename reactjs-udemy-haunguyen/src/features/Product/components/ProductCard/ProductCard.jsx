@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
-import { useParams } from "react-router-dom";
+import { Route, useParams } from "react-router-dom";
 import Loading from "./../../../../components/Loading/Loading";
+import NotFoundPage from "./../../../../components/NotFoundPage/NotFoundPage";
 import ReadMore from "./../../../../components/ReadMore/ReadMore";
 import { environment } from "./../../../../environment/environment";
 import { useAxiosGet } from "./../../../../hooks/HttpRequests";
@@ -14,9 +15,7 @@ function ProductCard(props) {
 	let contentRendered = null;
 
 	if (dataRes.error) {
-		contentRendered = (
-			<p>There was an error please refresh or try again later!</p>
-		);
+		contentRendered = <Route component={NotFoundPage} />;
 	}
 
 	if (dataRes.loading) {

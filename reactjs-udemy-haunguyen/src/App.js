@@ -2,12 +2,10 @@ import { React } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import Album from "./features/Albums/Album";
-import ProductCard from "./features/Product/components/ProductCard/ProductCard";
-import Product from "./features/Product/Product";
-// import { useRandomColor } from "./hooks/RandomColor";
-// import { useClock } from "./hooks/Clock";
-import Todo from "./features/Todo/Todo";
+import AlbumIndex from "./features/Albums/AlbumIndex";
+import ProductIndex from "./features/Product/ProductIndex";
+import TodoIndex from "./features/Todo/TodoIndex";
+import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 
 function App() {
 	// const name = "Hai";
@@ -52,11 +50,12 @@ function App() {
 				</header> */}
 				<Header />
 				<Switch>
-					<Route path="/todo" component={Todo} />
-					<Route exact path="/product" component={Product} />
-					<Route path="/product/:id" component={ProductCard} />
-					<Route path="/album" component={Album} />
-					<Route exact path="/" component={Album} />
+					<Route path="/todo" component={TodoIndex} />
+					<Route path="/product" component={ProductIndex} />
+					<Route path="/album" component={AlbumIndex} />
+					<Route exact path="/" component={AlbumIndex} />
+
+					<Route component={NotFoundPage} />
 				</Switch>
 				<Footer />
 			</Router>

@@ -1,9 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useAxiosGet } from "../../hooks/HttpRequests";
-import Loading from "./../../components/Loading/Loading";
-import Pagination from "./../../components/Pagination/Pagination";
-import { environment } from "./../../environment/environment";
-import ProductList from "./components/ProductList/ProductList";
+import { Route } from "react-router-dom";
+import Loading from "./../../../components/Loading/Loading";
+import NotFoundPage from "./../../../components/NotFoundPage/NotFoundPage";
+import Pagination from "./../../../components/Pagination/Pagination";
+import { environment } from "./../../../environment/environment";
+import { useAxiosGet } from "./../../../hooks/HttpRequests";
+import ProductList from "./../components/ProductList/ProductList";
 
 function Product() {
 	const url = environment.BASE_URL;
@@ -32,7 +34,7 @@ function Product() {
 	}
 
 	if (dataRespond.error) {
-		content = <p>There was an error please refresh or try again later!</p>;
+		content = <Route component={NotFoundPage} />;
 	}
 
 	if (allRecord) {
