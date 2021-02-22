@@ -65,13 +65,10 @@ function Todo(props) {
 	};
 
 	const addTodo = (value) => {
-		// clone current array to the new one
-		let newToDoList = [...todoList];
-
 		// add new todo item to array
-		newToDoList = [
-			...newToDoList,
-			{ id: todoList.length + 1, title: value, status: "working" },
+		const newToDoList = [
+			...todoList,
+			{ id: todoList.length + 1, title: value.title, status: "working" },
 		];
 
 		//update todoList
