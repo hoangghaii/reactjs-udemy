@@ -1,17 +1,16 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { environment } from "./../../../environment/environment";
+import productApi from "./../../../apis/productApi";
 
 function Search(props) {
 	const [searchvalue, setSearchValue] = useState("");
 	const [products, setProducts] = useState([]);
 	const [constProducts, setConstProducts] = useState([]);
 
-	const url = environment.BASE_URL;
 	useEffect(() => {
-		axios.get(url).then((res) => {
-			setConstProducts(res.data);
-		});
+		(async () => {
+			const dataRes = await productApi.getAll();
+			setConstProducts(dataRes.data);
+		})();
 	}, []);
 
 	const getSearchList = (dataList, searchText) => {

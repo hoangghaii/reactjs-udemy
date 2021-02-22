@@ -1,29 +1,40 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Route, useParams } from "react-router-dom";
+import productApi from "./../../../../apis/productApi";
 import Loading from "./../../../../components/Loading/Loading";
 import NotFoundPage from "./../../../../components/NotFoundPage/NotFoundPage";
 import ReadMore from "./../../../../components/ReadMore/ReadMore";
-import { environment } from "./../../../../environment/environment";
-import { useAxiosGet } from "./../../../../hooks/HttpRequests";
 import "./ProductCard.scss";
 
 function ProductCard(props) {
 	const id = useParams();
-	const url = `${environment.BASE_URL}/${id.id}`;
-	const dataRes = useAxiosGet(url);
+
+	const [dataRespond, setDataRespond] = useState({
+		loading: true,
+		data: null,
+		status: undefined,
+	});
+
+	useEffect(() => {
+		(async () => {
+			const dataRes = await productApi.get(id.id);
+
+			setDataRespond({
+				loading: false,
+				data: dataRes.data,
+				status: dataRes.status,
+			});
+		})();
+	}, [id.id]);
 
 	let contentRendered = null;
 
-	if (dataRes.error) {
+	if (dataRespond.error) {
 		contentRendered = <Route component={NotFoundPage} />;
-	}
-
-	if (dataRes.loading) {
+	} else if (dataRespond.loading) {
 		contentRendered = <Loading />;
-	}
-
-	if (dataRes.data) {
-		const productDetail = dataRes.data;
+	} else if (dataRespond.data) {
+		const productDetail = dataRespond.data;
 		let exampleReadMoreText =
 			productDetail.description +
 			"Sunt commodo nisi sint ad eiusmod excepteur adipisicing et veniam. In consectetur cillum ipsum reprehenderit consectetur pariatur. Consectetur minim sit Lorem dolor.Culpa ad sint est aute nulla labore esse ad aute fugiat commodo. Commodo tempor aliquip labore excepteur commodo duis esse ex velit non. Adipisicing consequat aliqua esse in sint ipsum non veniam nostrud nulla officia velit. Id pariatur amet laboris ullamco aliquip fugiat.";

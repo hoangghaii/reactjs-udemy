@@ -1,15 +1,29 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Route } from "react-router-dom";
+import productApi from "./../../../apis/productApi";
 import Loading from "./../../../components/Loading/Loading";
 import NotFoundPage from "./../../../components/NotFoundPage/NotFoundPage";
 import Pagination from "./../../../components/Pagination/Pagination";
-import { environment } from "./../../../environment/environment";
-import { useAxiosGet } from "./../../../hooks/HttpRequests";
 import ProductList from "./../components/ProductList/ProductList";
 
 function Product() {
-	const url = environment.BASE_URL;
-	const dataRespond = useAxiosGet(url);
+	const [dataRespond, setDataRespond] = useState({
+		loading: true,
+		data: null,
+		status: undefined,
+	});
+
+	useEffect(() => {
+		(async () => {
+			const dataRes = await productApi.getAll();
+
+			setDataRespond({
+				loading: false,
+				data: dataRes.data,
+				status: dataRes.status,
+			});
+		})();
+	}, []);
 
 	let content = null;
 
@@ -31,13 +45,9 @@ function Product() {
 
 	if (dataRespond.loading) {
 		content = <Loading />;
-	}
-
-	if (dataRespond.error) {
+	} else if (!dataRespond.status) {
 		content = <Route component={NotFoundPage} />;
-	}
-
-	if (allRecord) {
+	} else if (allRecord) {
 		const totalRecords = allRecord.length;
 
 		if (totalRecords === 0) return null;
