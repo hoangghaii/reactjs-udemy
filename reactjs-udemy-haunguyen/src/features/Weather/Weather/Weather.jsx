@@ -36,6 +36,7 @@ function Weather(props) {
 			.catch((error) => {
 				console.log(error);
 			});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const dateBuilder = (d) => {

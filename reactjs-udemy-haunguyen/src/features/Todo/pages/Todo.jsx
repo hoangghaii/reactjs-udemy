@@ -38,22 +38,6 @@ function Todo(props) {
 	useEffect(() => {
 		getAllData();
 	}, []);
-	// useEffect(() => {
-	// 	(async () => {
-	// 		await todoApi
-	// 			.getAll()
-	// 			.then((dataRes) =>
-	// 				setDataRespond({
-	// 					data: dataRes.data,
-	// 					status: dataRes.status,
-	// 				}),
-	// 				setLoading(false)
-	// 			)
-	// 			.catch((error) => {
-	// 				console.log(error);
-	// 			});
-	// 	})();
-	// }, []);
 
 	const location = useLocation();
 	const history = useHistory();
