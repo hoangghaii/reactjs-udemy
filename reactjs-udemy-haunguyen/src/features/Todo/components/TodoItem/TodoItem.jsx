@@ -8,7 +8,7 @@ function TodoItem(props) {
 	let btnStatusClassName =
 		"flex-no-shrink py-2 px-4 ml-4 mr-2 border-2 rounded hover:text-white ";
 
-	if (todo.status === "done") {
+	if (todo.status === true) {
 		titleClassName += " line-through text-green";
 		btnStatusClassName += " text-grey border-grey hover:bg-grey";
 	} else {
@@ -36,7 +36,7 @@ function TodoItem(props) {
 					className={btnStatusClassName}
 					onClick={() => handleClickItem(todo.id)}
 				>
-					{todo.status === "done" ? "Not Done" : "Done"}
+					{todo.status === true ? "Not Done" : "Done"}
 				</button>
 				<button
 					className="flex-no-shrink py-2 px-4 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red"

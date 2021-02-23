@@ -2,10 +2,11 @@ import { React } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
+import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import AlbumIndex from "./features/Albums/AlbumIndex";
 import ProductIndex from "./features/Product/ProductIndex";
 import TodoIndex from "./features/Todo/TodoIndex";
-import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
+import WeatherIndex from "./features/Weather/WeatherIndex";
 
 function App() {
 	// const name = "Hai";
@@ -53,6 +54,7 @@ function App() {
 					<Route path="/todo" component={TodoIndex} />
 					<Route path="/product" component={ProductIndex} />
 					<Route path="/album" component={AlbumIndex} />
+					<Route path="/weather" component={WeatherIndex} />
 					<Route exact path="/" component={AlbumIndex} />
 
 					<Route component={NotFoundPage} />
