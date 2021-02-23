@@ -1,22 +1,18 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 import "./SearchBox.scss";
 
 function SearchBox(props) {
-	const { handleSubmit, handleInput } = props;
+	const { handleSubmit } = props;
+	const [valueInput, setValueInput] = useState("");
 
 	const onSubmit = (e) => {
 		e.preventDefault();
 
 		if (!handleSubmit) return;
-		handleSubmit(e);
-	};
+		handleSubmit(valueInput);
 
-	const onInput = (e) => {
-		e.preventDefault();
-
-		if (!handleInput) return;
-		handleInput(e);
+		setValueInput("");
 	};
 
 	return (
@@ -24,9 +20,12 @@ function SearchBox(props) {
 			<form onSubmit={onSubmit}>
 				<input
 					type="text"
-					onChange={onInput}
 					autoComplete="off"
 					placeholder="Search for a city..."
+					value={valueInput}
+					onChange={(event) => {
+						setValueInput(event.target.value);
+					}}
 				/>
 			</form>
 		</div>
@@ -35,12 +34,10 @@ function SearchBox(props) {
 
 SearchBox.propTypes = {
 	handleSubmit: PropTypes.func,
-	handleInput: PropTypes.func,
 };
 
 SearchBox.defaultProps = {
 	handleSubmit: null,
-	handleInput: null,
 };
 
 export default SearchBox;

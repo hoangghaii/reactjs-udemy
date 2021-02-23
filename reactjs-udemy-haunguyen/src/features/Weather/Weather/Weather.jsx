@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import "./Weather.scss";
-import SearchBox from "./../SearchBox/SearchBox";
-import Geolocation from "./../Geolocation/Geolocation";
-import WeatherDisplay from "./../WeatherDisplay/WeatherDisplay";
+import React, { useEffect, useState } from "react";
 import { getWeather } from "./../../../apis/weatherApi";
+import Geolocation from "./../Geolocation/Geolocation";
+import SearchBox from "./../SearchBox/SearchBox";
+import WeatherDisplay from "./../WeatherDisplay/WeatherDisplay";
+import "./Weather.scss";
 
 function Weather(props) {
-	const [inputlocation, setInputLocation] = useState("Embu");
 	const [currentDate, setCurrentDate] = useState("");
 	const [location, setLocation] = useState({
 		city: "",
@@ -16,6 +14,7 @@ function Weather(props) {
 	});
 	const [weather, setWeather] = useState({
 		currentTemp: 0,
+		humidity: 0,
 		weatherMain: "",
 		tempMax: 0,
 		tempMin: 0,
@@ -29,10 +28,14 @@ function Weather(props) {
 	};
 
 	useEffect(() => {
-		fetchData("São Paulo").then(([newWeather, placeName]) => {
-			setWeather(newWeather);
-			setLocation(placeName);
-		});
+		fetchData("São Paulo")
+			.then(([newWeather, placeName]) => {
+				setWeather(newWeather);
+				setLocation(placeName);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	}, []);
 
 	const dateBuilder = (d) => {
@@ -81,9 +84,17 @@ function Weather(props) {
 		return getImgSource("blue");
 	};
 
-	const handleInputLocation = () => {};
-
-	const getForceCast = () => {};
+	const handleGetForceCast = (value) => {
+		fetchData(value)
+			.then(([newWeather, placeName]) => {
+				setWeather(newWeather);
+				setLocation(placeName);
+				console.log(newWeather);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
 
 	return (
 		<div
@@ -91,10 +102,7 @@ function Weather(props) {
 			style={{ backgroundImage: `url(${setBackground()})` }}
 		>
 			<div className="wrapper">
-				<SearchBox
-					handleSubmit={handleInputLocation}
-					handleInput={getForceCast}
-				/>
+				<SearchBox handleSubmit={handleGetForceCast} />
 				<Geolocation location={location} currentDate={currentDate} />
 				<WeatherDisplay weather={weather} />
 			</div>

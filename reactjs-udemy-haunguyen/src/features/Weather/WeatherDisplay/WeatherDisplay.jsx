@@ -4,7 +4,7 @@ import "./WeatherDisplay.scss";
 
 function WeatherDisplay(props) {
 	const {
-		weather: { currentTemp, weatherMain, tempMax, tempMin },
+		weather: { currentTemp, humidity, weatherMain, tempMax, tempMin },
 	} = props;
 
 	return (
@@ -14,6 +14,7 @@ function WeatherDisplay(props) {
 				<span>&#186;C</span>
 			</h1>
 			<h2>{weatherMain}</h2>
+			<h3>Độ ẩm: {humidity} g/m³</h3>
 			<h3>
 				{Math.round(tempMin)}&#186;C / {Math.round(tempMax)}&#186;C
 			</h3>
@@ -22,8 +23,11 @@ function WeatherDisplay(props) {
 }
 
 WeatherDisplay.propTypes = {
-	location: PropTypes.object.isRequired,
-	currentDate: PropTypes.string.isRequired,
+	weather: PropTypes.any,
+};
+
+WeatherDisplay.defaultProps = {
+	weather: null,
 };
 
 export default WeatherDisplay;

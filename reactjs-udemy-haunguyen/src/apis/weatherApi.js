@@ -35,17 +35,21 @@ export const getWeather = async (location) => {
 		country: geocodeResult.country,
 	};
 
-	const URL = `${WEATHER_BASE}?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&units=metric&appid=${OW_API}`;
+	const URL = `${WEATHER_BASE}?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&units=metric&lang=vi&appid=${OW_API}`;
 
 	const weatherResult = await fetch(URL)
 		.then((data) => data.json())
 		.then((result) => result);
 
 	const currentTemp = weatherResult.current.temp;
+	const humidity = weatherResult.current.humidity;
 	const todayWeather = weatherResult.daily[0];
-	const weatherMain = todayWeather.weather[0].main;
+	const weatherMain = todayWeather.weather[0].description;
 	const tempMax = todayWeather.temp.max;
 	const tempMin = todayWeather.temp.min;
 
-	return [{ currentTemp, weatherMain, tempMax, tempMin }, placeName];
+	return [
+		{ currentTemp, humidity, weatherMain, tempMax, tempMin },
+		placeName,
+	];
 };
