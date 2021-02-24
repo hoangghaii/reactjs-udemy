@@ -1,5 +1,7 @@
 import { React } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import SignIn from "./auth/SignIn/SignIn";
+import SignUp from "./auth/SignUp/SignUp";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
@@ -57,6 +59,9 @@ function App() {
 					<Route path="/album" component={AlbumIndex} />
 					<Route path="/weather" component={WeatherIndex} />
 					<Route path="/counter" component={Counter} />
+					<Route path="/signin" component={SignIn} />
+					<Route path="/signup" component={SignUp} />
+
 					<Route exact path="/" component={AlbumIndex} />
 
 					<Route component={NotFoundPage} />

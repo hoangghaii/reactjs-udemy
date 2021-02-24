@@ -7,7 +7,7 @@ function InputField(props) {
 	const { form, name, label, disable } = props;
 	const { errors, formState } = form;
 	const hasError = formState.touched[name] && errors[name];
-
+	console.log(hasError);
 	return (
 		<Controller
 			name={name}
