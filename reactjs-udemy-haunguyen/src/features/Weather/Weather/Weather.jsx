@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { getWeather } from "./../../../apis/weatherApi";
 import Geolocation from "./../Geolocation/Geolocation";
 import SearchBox from "./../SearchBox/SearchBox";
@@ -85,15 +85,18 @@ function Weather(props) {
 		return getImgSource("blue");
 	};
 
+	const [errorRes, setErrorRes] = useState(false);
+
 	const handleGetForceCast = (value) => {
 		fetchData(value)
 			.then(([newWeather, placeName]) => {
 				setWeather(newWeather);
 				setLocation(placeName);
-				console.log(newWeather);
+				setErrorRes(false);
 			})
 			.catch((error) => {
 				console.log(error);
+				setErrorRes(true);
 			});
 	};
 
@@ -104,8 +107,22 @@ function Weather(props) {
 		>
 			<div className="wrapper">
 				<SearchBox handleSubmit={handleGetForceCast} />
-				<Geolocation location={location} currentDate={currentDate} />
-				<WeatherDisplay weather={weather} />
+				{errorRes && (
+					<div className="error-msg">
+						<h2>Error when load API!</h2>
+						<h3>Maybe you entered the city name incorrectly</h3>
+					</div>
+				)}
+
+				{!errorRes && (
+					<Fragment>
+						<Geolocation
+							location={location}
+							currentDate={currentDate}
+						/>
+						<WeatherDisplay weather={weather} />
+					</Fragment>
+				)}
 			</div>
 		</div>
 	);

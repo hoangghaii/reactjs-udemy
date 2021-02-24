@@ -3,7 +3,7 @@ import React from "react";
 import NavigationMenuItem from "./NavigationMenuItem/NavigationMenuItem";
 
 function NavigationMenu(props) {
-	const menuList = ["album", "product", "todo", "weather"];
+	const menuList = ["album", "product", "todo", "weather", "counter"];
 
 	return (
 		<div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">

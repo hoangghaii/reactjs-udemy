@@ -17,3 +17,19 @@
 	);
 	padding-bottom: 2rem;
 }
+
+.error-msg {
+	margin-top: 25px;
+	color: #fff;
+
+	h2 {
+		font-size: 1.7rem;
+		font-weight: 700;
+		margin-bottom: 15px;
+	}
+
+	h3 {
+		font-size: 1.5rem;
+		font-weight: 500;
+	}
+}
