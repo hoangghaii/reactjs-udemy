@@ -4,8 +4,7 @@ const todoApi = {
 	async getAll(params) {
 		const url = "/todo";
 		try {
-			const respon = await axiosClient.get(url, { params });
-			return respon;
+			return await axiosClient.get(url, { params });
 		} catch (error) {
 			return error;
 		}
@@ -14,8 +13,7 @@ const todoApi = {
 	async get(id) {
 		const url = `/todo/${id}`;
 		try {
-			const respon = await axiosClient.get(url);
-			return respon;
+			return await axiosClient.get(url);
 		} catch (error) {
 			return error;
 		}
@@ -24,8 +22,7 @@ const todoApi = {
 	async add(data) {
 		const url = `/todo`;
 		try {
-			const respon = await axiosClient.post(url, data);
-			return respon;
+			return await axiosClient.post(url, data);
 		} catch (error) {
 			return error;
 		}
@@ -34,8 +31,7 @@ const todoApi = {
 	async update(data) {
 		const url = `/todo/${data.id}`;
 		try {
-			const respon = await axiosClient.put(url, data);
-			return respon;
+			return await axiosClient.put(url, data);
 		} catch (error) {
 			return error;
 		}
@@ -44,8 +40,7 @@ const todoApi = {
 	async remove(id) {
 		const url = `/todo/${id}`;
 		try {
-			const respon = await axiosClient.delete(url);
-			return respon;
+			return await axiosClient.delete(url);
 		} catch (error) {
 			return error;
 		}

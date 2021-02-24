@@ -4,8 +4,7 @@ const productApi = {
 	async getAll(params) {
 		const url = "/products";
 		try {
-			const respon = await axiosClient.get(url, { params });
-			return respon;
+			return await axiosClient.get(url, { params });
 		} catch (error) {
 			return error;
 		}
@@ -14,8 +13,7 @@ const productApi = {
 	async get(id) {
 		const url = `/products/${id}`;
 		try {
-			const respon = await axiosClient.get(url);
-			return respon;
+			return await axiosClient.get(url);
 		} catch (error) {
 			return error;
 		}
@@ -24,8 +22,7 @@ const productApi = {
 	async add(data) {
 		const url = `/products`;
 		try {
-			const respon = await axiosClient.post(url, data);
-			return respon;
+			return await axiosClient.post(url, data);
 		} catch (error) {
 			return error;
 		}
@@ -34,8 +31,7 @@ const productApi = {
 	async update(data) {
 		const url = `/products/${data.id}`;
 		try {
-			const respon = await axiosClient.patch(url, data);
-			return respon;
+			return await axiosClient.patch(url, data);
 		} catch (error) {
 			return error;
 		}
@@ -44,8 +40,7 @@ const productApi = {
 	async remove(id) {
 		const url = `/products/${id}`;
 		try {
-			const respon = await axiosClient.delete(url);
-			return respon;
+			return await axiosClient.delete(url);
 		} catch (error) {
 			return error;
 		}

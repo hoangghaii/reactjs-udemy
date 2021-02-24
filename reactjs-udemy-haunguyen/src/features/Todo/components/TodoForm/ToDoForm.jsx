@@ -32,22 +32,6 @@ function ToDoForm(props) {
 	};
 
 	return (
-		// <form className="flex mt-4" onSubmit={handleSubmit}>
-		// 	<input
-		// 		className="shadow appearance-none rounded w-full py-2 px-3 mr-4 text-grey-darker"
-		// 		placeholder="Add Todo"
-		// 		value={value}
-		// 		onChange={(event) => {
-		// 			setValue(event.target.value);
-		// 		}}
-		// 	/>
-		// 	<button
-		// 		type="submit"
-		// 		className="flex-no-shrink py-2 px-4 border-2 rounded text-teal border-teal hover:text-white hover:bg-teal"
-		// 	>
-		// 		Add
-		// 	</button>
-		// </form>
 		<form className="flex mt-4" onSubmit={form.handleSubmit(handleSubmit)}>
 			<InputField name="title" label="Todo" form={form} />
 		</form>
@@ -63,3 +47,20 @@ ToDoForm.defaultProps = {
 };
 
 export default ToDoForm;
+
+// <form className="flex mt-4" onSubmit={handleSubmit}>
+// 	<input
+// 		className="shadow appearance-none rounded w-full py-2 px-3 mr-4 text-grey-darker"
+// 		placeholder="Add Todo"
+// 		value={value}
+// 		onChange={(event) => {
+// 			setValue(event.target.value);
+// 		}}
+// 	/>
+// 	<button
+// 		type="submit"
+// 		className="flex-no-shrink py-2 px-4 border-2 rounded text-teal border-teal hover:text-white hover:bg-teal"
+// 	>
+// 		Add
+// 	</button>
+// </form>

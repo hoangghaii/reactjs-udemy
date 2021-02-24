@@ -1,11 +1,10 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
-import PropTypes from "prop-types";
-import AuthInput from "./../../../components/FormControl/AuthInput/AuthInput";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
+import AuthInput from "./../../../components/FormControl/AuthInput/AuthInput";
 
-function SignInForm(props) {
+function SignUpForm(props) {
 	const schema = yup.object().shape({
 		name: yup
 			.string()
@@ -20,6 +19,10 @@ function SignInForm(props) {
 			.string()
 			.required("Please enter password")
 			.min(5, "Password is to short"),
+		rePassword: yup
+			.string()
+			.required("Please enter re-password")
+			.oneOf([yup.ref("password")], "Password does not match"),
 	});
 
 	const { register, errors, handleSubmit } = useForm({
@@ -37,6 +40,7 @@ function SignInForm(props) {
 				<AuthInput
 					label="User name"
 					name="name"
+					type="string"
 					labelFor="user-name"
 					className="rounded-t-md"
 					refInput={register}
@@ -46,6 +50,7 @@ function SignInForm(props) {
 				<AuthInput
 					label="Email address"
 					name="email"
+					type="string"
 					labelFor="email-address"
 					className="rounded-none"
 					refInput={register}
@@ -55,7 +60,18 @@ function SignInForm(props) {
 				<AuthInput
 					label="Password"
 					name="password"
+					type="password"
 					labelFor="password"
+					className="rounded-none"
+					refInput={register}
+					isError={errors}
+				/>
+
+				<AuthInput
+					label="Re-password"
+					name="rePassword"
+					type="password"
+					labelFor="re-password"
 					className="rounded-b-md"
 					refInput={register}
 					isError={errors}
@@ -115,6 +131,6 @@ function SignInForm(props) {
 	);
 }
 
-SignInForm.propTypes = {};
+SignUpForm.propTypes = {};
 
-export default SignInForm;
+export default SignUpForm;
