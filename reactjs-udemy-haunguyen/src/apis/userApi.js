@@ -1,10 +1,10 @@
-import axiosClient from "./axiosClient";
+import axiosAuthClient from "./axiosAuthClient";
 
 const userApi = {
 	async getAll(params) {
 		const url = "/users";
 		try {
-			const respon = await axiosClient.get(url, { params });
+			const respon = await axiosAuthClient.get(url, { params });
 			return respon;
 		} catch (error) {
 			return error;
@@ -14,7 +14,7 @@ const userApi = {
 	async get(id) {
 		const url = `/users/${id}`;
 		try {
-			const respon = await axiosClient.get(url);
+			const respon = await axiosAuthClient.get(url);
 			return respon;
 		} catch (error) {
 			return error;
@@ -22,9 +22,10 @@ const userApi = {
 	},
 
 	async register(data) {
-		const url = `/users`;
+		// const url = `/register`;
+		const url = `/auth/local/register`;
 		try {
-			return await axiosClient.post(url, data);
+			return await axiosAuthClient.post(url, data);
 		} catch (error) {
 			return error;
 		}
@@ -33,7 +34,7 @@ const userApi = {
 	async update(data) {
 		const url = `/users/${data.id}`;
 		try {
-			const respon = await axiosClient.put(url, data);
+			const respon = await axiosAuthClient.put(url, data);
 			return respon;
 		} catch (error) {
 			return error;
@@ -43,7 +44,7 @@ const userApi = {
 	async remove(id) {
 		const url = `/users/${id}`;
 		try {
-			const respon = await axiosClient.delete(url);
+			const respon = await axiosAuthClient.delete(url);
 			return respon;
 		} catch (error) {
 			return error;

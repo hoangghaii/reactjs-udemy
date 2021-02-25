@@ -1,9 +1,36 @@
+import { unwrapResult } from "@reduxjs/toolkit";
+import { useSnackbar } from "notistack";
 import React from "react";
-import PropTypes from "prop-types";
-import SignUpForm from "./SignUpForm/SignUpForm";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { register } from "./../authSlice";
+import SignUpForm from "./SignUpForm/SignUpForm";
 
 function SignUp(props) {
+	const dispatch = useDispatch();
+	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+	const handleSubmit = async (data) => {
+		try {
+			data.username = data.email;
+
+			const action = register(data);
+			const resultAction = await dispatch(action);
+			const user = unwrapResult(resultAction);
+			console.log("success Fetched: ", user);
+			enqueueSnackbar("Register Successfully !!!", {
+				variant: "success",
+				anchorOrigin: { horizontal: "right", vertical: "top" },
+			});
+		} catch (err) {
+			console.log("error, Fetch failed: ", err);
+			enqueueSnackbar("Error When Register !!!", {
+				variant: "error",
+				anchorOrigin: { horizontal: "right", vertical: "top" },
+			});
+		}
+	};
+
 	return (
 		<div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
 			<div className="max-w-md w-full space-y-8">
@@ -24,7 +51,7 @@ function SignUp(props) {
 						</Link>
 					</p>
 				</div>
-				<SignUpForm />
+				<SignUpForm onSubmitForm={handleSubmit} />
 			</div>
 		</div>
 	);
