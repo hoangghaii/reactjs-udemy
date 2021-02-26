@@ -1,5 +1,7 @@
 import { React } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import SignIn from "./auth/SignIn/SignIn";
 import SignUp from "./auth/SignUp/SignUp";
 import Footer from "./components/Footer/Footer";
@@ -23,52 +25,66 @@ function App() {
 	// let time = useClock();
 
 	return (
-		<div className="">
-			<Router>
-				{/* <header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
-					<p>
-						Edit <code>src/App.js</code> and save to reload.
-					</p>
-					<p>
-						Xin chao {name}-{age}-{isMale ? "Male" : "Female"}
-					</p>
-	
-					{isMale ? <p>Male</p> : <p>Female</p>}
-	
-					{isMale && (
-						<>
-							<p>Male 1</p>
-							<p>Male 2</p>
-							<p>Male 3</p>
-						</>
-					)}
-	
-					<ul>
-						{colorList.map((color, index) => (
-							<li key={index}>{color}</li>
-						))}
-					</ul>
-	
-					<p>{student.name}</p>
-				</header> */}
-				<Header />
-				<Switch>
-					<Route path="/todo" component={TodoIndex} />
-					<Route path="/product" component={ProductIndex} />
-					<Route path="/album" component={AlbumIndex} />
-					<Route path="/weather" component={WeatherIndex} />
-					<Route path="/counter" component={Counter} />
-					<Route path="/signin" component={SignIn} />
-					<Route path="/signup" component={SignUp} />
+		<>
+			<div className="">
+				<Router>
+					{/* <header className="App-header">
+						<img src={logo} className="App-logo" alt="logo" />
+						<p>
+							Edit <code>src/App.js</code> and save to reload.
+						</p>
+						<p>
+							Xin chao {name}-{age}-{isMale ? "Male" : "Female"}
+						</p>
+		
+						{isMale ? <p>Male</p> : <p>Female</p>}
+		
+						{isMale && (
+							<>
+								<p>Male 1</p>
+								<p>Male 2</p>
+								<p>Male 3</p>
+							</>
+						)}
+		
+						<ul>
+							{colorList.map((color, index) => (
+								<li key={index}>{color}</li>
+							))}
+						</ul>
+		
+						<p>{student.name}</p>
+					</header> */}
+					<Header />
+					<Switch>
+						<Route path="/todo" component={TodoIndex} />
+						<Route path="/product" component={ProductIndex} />
+						<Route path="/album" component={AlbumIndex} />
+						<Route path="/weather" component={WeatherIndex} />
+						<Route path="/counter" component={Counter} />
+						<Route path="/signin" component={SignIn} />
+						<Route path="/signup" component={SignUp} />
 
-					<Route exact path="/" component={AlbumIndex} />
+						<Route exact path="/" component={AlbumIndex} />
 
-					<Route component={NotFoundPage} />
-				</Switch>
-				<Footer />
-			</Router>
-		</div>
+						<Route component={NotFoundPage} />
+					</Switch>
+					<Footer />
+				</Router>
+			</div>
+
+			<ToastContainer
+				position="bottom-right"
+				autoClose={5000}
+				hideProgressBar
+				newestOnTop
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss={false}
+				draggable={false}
+				pauseOnHover
+			/>
+		</>
 	);
 }
 

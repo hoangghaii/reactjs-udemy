@@ -1,4 +1,3 @@
-import { SnackbarProvider } from "notistack";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
@@ -10,19 +9,7 @@ import reportWebVitals from "./reportWebVitals";
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<SnackbarProvider
-				iconVariant={{
-					success: "✅",
-					error: "✖️",
-					warning: "⚠️",
-					info: "ℹ️",
-				}}
-				hideIconVariant={false}
-				preventDuplicate
-				maxSnack={3}
-			>
-				<App />
-			</SnackbarProvider>
+			<App />
 		</Provider>
 	</React.StrictMode>,
 	document.getElementById("root")
