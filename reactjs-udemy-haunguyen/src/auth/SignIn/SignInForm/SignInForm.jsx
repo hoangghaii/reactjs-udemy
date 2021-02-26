@@ -6,6 +6,12 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 function SignInForm(props) {
+	const user = localStorage.getItem("user") || null;
+	let userInfo = {};
+	if (user) {
+		userInfo = JSON.parse(user);
+	}
+
 	const schema = yup.object().shape({
 		name: yup
 			.string()
@@ -35,19 +41,12 @@ function SignInForm(props) {
 			<input type="hidden" name="remember" value="false" />
 			<div className="rounded-md shadow-sm -space-y-px">
 				<AuthInput
-					label="User name"
-					name="name"
-					labelFor="user-name"
-					className="rounded-t-md"
-					refInput={register}
-					isError={errors}
-				/>
-
-				<AuthInput
 					label="Email address"
 					name="email"
+					type="string"
 					labelFor="email-address"
-					className="rounded-none"
+					className="rounded-t-md"
+					defaultValues={userInfo.email || ""}
 					refInput={register}
 					isError={errors}
 				/>
@@ -55,8 +54,10 @@ function SignInForm(props) {
 				<AuthInput
 					label="Password"
 					name="password"
+					type="password"
 					labelFor="password"
 					className="rounded-b-md"
+					defaultValues={userInfo.password || ""}
 					refInput={register}
 					isError={errors}
 				/>

@@ -47,4 +47,8 @@ AuthInput.propTypes = {
 	isError: PropTypes.any,
 };
 
+AuthInput.defaultProps = {
+	// value: "",
+};
+
 export default AuthInput;

@@ -7,6 +7,12 @@ import AuthInput from "./../../../components/FormControl/AuthInput/AuthInput";
 import Loading from "./../../../components/Loading/Loading";
 
 function SignUpForm(props) {
+	const user = localStorage.getItem("user") || null;
+	let userInfo = {};
+	if (user) {
+		userInfo = JSON.parse(user);
+	}
+
 	const { onSubmitForm } = props;
 
 	const schema = yup.object().shape({
@@ -35,6 +41,12 @@ function SignUpForm(props) {
 		handleSubmit,
 		formState: { isSubmitting },
 	} = useForm({
+		defaultValues: {
+			fullName: userInfo.fullName || "",
+			email: userInfo.email || "",
+			password: userInfo.password || "",
+			retypePassword: userInfo.password || "",
+		},
 		resolver: yupResolver(schema),
 	});
 
@@ -56,6 +68,7 @@ function SignUpForm(props) {
 						type="string"
 						labelFor="full-name"
 						className="rounded-t-md"
+						defaultValues={userInfo.fullName || ""}
 						refInput={register}
 						isError={errors}
 					/>
@@ -66,6 +79,7 @@ function SignUpForm(props) {
 						type="string"
 						labelFor="email-address"
 						className="rounded-none"
+						defaultValues={userInfo.email || ""}
 						refInput={register}
 						isError={errors}
 					/>
@@ -76,6 +90,7 @@ function SignUpForm(props) {
 						type="password"
 						labelFor="password"
 						className="rounded-none"
+						defaultValues={userInfo.password || ""}
 						refInput={register}
 						isError={errors}
 					/>
@@ -86,6 +101,7 @@ function SignUpForm(props) {
 						type="password"
 						labelFor="re-password"
 						className="rounded-b-md"
+						defaultValues={userInfo.password || ""}
 						refInput={register}
 						isError={errors}
 					/>

@@ -74,6 +74,7 @@ function App() {
 			</div>
 
 			<ToastContainer
+				limit={3}
 				position="bottom-right"
 				autoClose={5000}
 				hideProgressBar
