@@ -1,7 +1,19 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { logout } from "../../../auth/authSlice";
 
 function NotificationUser(props) {
+	const loggedInUser = useSelector((state) => state.user.current);
+	console.log(loggedInUser);
+	const isLoggedIn = !!loggedInUser.id;
+
+	const dispatch = useDispatch();
+	const handleLogOut = () => {
+		const action = logout();
+		dispatch(action);
+	};
+
 	return (
 		<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 			<button className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
@@ -25,7 +37,7 @@ function NotificationUser(props) {
 			</button>
 
 			<div className="ml-3 relative">
-				<div>
+				{!isLoggedIn && (
 					<Link to="/signin">
 						<button
 							className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
@@ -40,7 +52,20 @@ function NotificationUser(props) {
 							/>
 						</button>
 					</Link>
-				</div>
+				)}
+
+				{isLoggedIn && (
+					<button
+						className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white px-3 py-2"
+						id="user-menu"
+						aria-haspopup="true"
+						onClick={handleLogOut}
+					>
+						<span className="capitalize text-white text-sm font-medium">
+							{loggedInUser.fullName}
+						</span>
+					</button>
+				)}
 			</div>
 		</div>
 	);

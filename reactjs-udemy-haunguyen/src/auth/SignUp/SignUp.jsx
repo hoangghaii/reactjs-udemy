@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { register } from "./../authSlice";
 import SignUpForm from "./SignUpForm/SignUpForm";
 function SignUp(props) {
-	let history = useHistory();
+	const history = useHistory();
 	const dispatch = useDispatch();
 
 	const handleSubmit = async (data) => {
@@ -15,17 +15,19 @@ function SignUp(props) {
 
 			const action = register(data);
 			const resultAction = await dispatch(action);
-			const user = unwrapResult(resultAction);
-			console.log("success Fetched: ", user);
+			unwrapResult(resultAction);
+
 			toast.success(
 				<div>
 					<h4>Signup success!</h4>
 					<span>Now we have youuu ♥</span>
 				</div>
 			);
+
 			history.push("/");
 		} catch (err) {
 			console.log("error, Fetch failed: ", err);
+
 			toast.error(
 				<div>
 					<h4>Oops!!</h4>

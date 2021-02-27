@@ -1,8 +1,9 @@
 import axios from "axios";
+import StorageKey from "./../constants/storage-key";
 import { environment } from "./../environment/environment";
 
-const user = localStorage.getItem("user");
-const token = localStorage.getItem("access_token");
+const user = localStorage.getItem(StorageKey.USER);
+const token = localStorage.getItem(StorageKey.TOKEN);
 
 const axiosAuthClient = axios.create({
 	// baseURL: environment.AUTH_API,
@@ -18,9 +19,11 @@ axiosAuthClient.interceptors.request.use(
 	function (config) {
 		// Do something before request is sent
 		if (user && token) {
-			config.headers.Authorization = `Bearer ${JSON.parse(token)}`;
+			config.headers = {
+				Authorization: `Bearer ${JSON.parse(token)}`,
+			};
+			return config;
 		}
-
 		return config;
 	},
 	function (error) {
@@ -39,7 +42,7 @@ axiosAuthClient.interceptors.response.use(
 	function (error) {
 		// Any status codes that falls outside the range of 2xx cause this function to trigger
 		// Do something with response error
-
+		console.log(error);
 		return Promise.reject(error);
 	}
 );

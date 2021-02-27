@@ -31,21 +31,10 @@ const userApi = {
 		}
 	},
 
-	async update(data) {
-		const url = `/users/${data.id}`;
+	async login(data) {
+		const url = `/auth/local`;
 		try {
-			const respon = await axiosAuthClient.put(url, data);
-			return respon;
-		} catch (error) {
-			return error;
-		}
-	},
-
-	async remove(id) {
-		const url = `/users/${id}`;
-		try {
-			const respon = await axiosAuthClient.delete(url);
-			return respon;
+			return await axiosAuthClient.post(url, data);
 		} catch (error) {
 			return error;
 		}

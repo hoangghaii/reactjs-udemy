@@ -1,8 +1,44 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import SignInForm from "./SignInForm/SignInForm";
+import { toast } from "react-toastify";
+import { login } from "../authSlice";
+import { useDispatch } from "react-redux";
+import { unwrapResult } from "@reduxjs/toolkit";
 
 function SignIn(props) {
+	const history = useHistory();
+	const dispatch = useDispatch();
+
+	const handleSubmit = async (data) => {
+		try {
+			const action = login(data);
+			const resultAction = await dispatch(action);
+			unwrapResult(resultAction);
+
+			toast.success(
+				<div>
+					<h4>Signin success!</h4>
+					<span>Wellcome back ♥</span>
+				</div>
+			);
+
+			history.push("/");
+		} catch (err) {
+			console.log("error, Fetch failed: ", err);
+
+			toast.error(
+				<div>
+					<h4>Oops!!</h4>
+					<span>
+						Maybe your email or password is not correct, please
+						check again
+					</span>
+				</div>
+			);
+		}
+	};
+
 	return (
 		<div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
 			<div className="max-w-md w-full space-y-8">
@@ -25,7 +61,7 @@ function SignIn(props) {
 					</p>
 				</div>
 
-				<SignInForm />
+				<SignInForm onSubmitForm={handleSubmit} />
 			</div>
 		</div>
 	);
