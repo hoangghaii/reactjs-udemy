@@ -9,6 +9,7 @@ import Header from "./components/Header/Header";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import AlbumIndex from "./features/Albums/AlbumIndex";
 import Counter from "./features/Counter/Counter";
+import PrivateRoute from "./features/PrivateRoute/PrivateRoute";
 import ProductIndex from "./features/Product/ProductIndex";
 import TodoIndex from "./features/Todo/TodoIndex";
 import WeatherIndex from "./features/Weather/WeatherIndex";
@@ -58,14 +59,21 @@ function App() {
 					<Header />
 					<Switch>
 						<Route path="/todo" component={TodoIndex} />
-						<Route path="/product" component={ProductIndex} />
 						<Route path="/album" component={AlbumIndex} />
-						<Route path="/weather" component={WeatherIndex} />
 						<Route path="/counter" component={Counter} />
 						<Route path="/signin" component={SignIn} />
 						<Route path="/signup" component={SignUp} />
 
 						<Route exact path="/" component={AlbumIndex} />
+
+						<PrivateRoute
+							path="/product"
+							component={ProductIndex}
+						/>
+						<PrivateRoute
+							path="/weather"
+							component={WeatherIndex}
+						/>
 
 						<Route component={NotFoundPage} />
 					</Switch>

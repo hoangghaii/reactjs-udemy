@@ -1,10 +1,10 @@
+import { unwrapResult } from "@reduxjs/toolkit";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import SignInForm from "./SignInForm/SignInForm";
 import { toast } from "react-toastify";
 import { login } from "../authSlice";
-import { useDispatch } from "react-redux";
-import { unwrapResult } from "@reduxjs/toolkit";
+import SignInForm from "./SignInForm/SignInForm";
 
 function SignIn(props) {
 	const history = useHistory();

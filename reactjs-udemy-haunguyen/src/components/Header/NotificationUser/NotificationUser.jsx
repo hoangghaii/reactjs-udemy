@@ -1,17 +1,20 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { logout } from "../../../auth/authSlice";
 
 function NotificationUser(props) {
+	const history = useHistory();
+
 	const loggedInUser = useSelector((state) => state.user.current);
-	console.log(loggedInUser);
 	const isLoggedIn = !!loggedInUser.id;
 
 	const dispatch = useDispatch();
 	const handleLogOut = () => {
 		const action = logout();
 		dispatch(action);
+
+		history.push("/");
 	};
 
 	return (
