@@ -22,7 +22,7 @@ const productApi = {
 	async add(data) {
 		const url = `/products`;
 		try {
-			return await axiosClient.post(url, data);
+			return await axiosClient.post(url, { data });
 		} catch (error) {
 			return error;
 		}
@@ -31,7 +31,7 @@ const productApi = {
 	async update(data) {
 		const url = `/products/${data.id}`;
 		try {
-			return await axiosClient.patch(url, data);
+			return await axiosClient.patch(url, { data });
 		} catch (error) {
 			return error;
 		}
