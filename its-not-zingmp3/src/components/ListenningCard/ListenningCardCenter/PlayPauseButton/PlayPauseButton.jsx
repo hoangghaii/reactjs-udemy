@@ -5,7 +5,7 @@ import React from "react";
 
 function PlayPauseButton(props) {
 	const { audio, audioState } = props;
-
+	console.log(audio);
 	const togglePlayPause = (e) => {
 		if (audioState === "playing") {
 			audio.pause();
@@ -33,7 +33,7 @@ function PlayPauseButton(props) {
 
 	return (
 		<IconButton
-			size="small"
+			// size="small"
 			color="primary"
 			aria-label="Pause"
 			onClick={togglePlayPause}

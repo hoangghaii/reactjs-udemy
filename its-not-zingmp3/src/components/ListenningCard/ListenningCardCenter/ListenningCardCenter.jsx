@@ -17,39 +17,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ListenningCardCenter(props) {
-	const { audio, songs, setCurrentSongIndex, currentSongIndex } = props;
-	console.log(audio);
+	const { audio, audioState } = props;
+	// console.log(audio.currentSrc);
 	const classes = useStyles();
-
-	const [audioState, setAudioState] = useState("pause");
-
-	const handlePlayPause = () => {
-		audioState === "playing"
-			? setAudioState("pause")
-			: setAudioState("playing");
-	};
-
-	const playNext = () => {
-		setCurrentSongIndex(() => {
-			let temp = currentSongIndex;
-			temp++;
-			if (temp > songs.length) {
-				temp = 0;
-			}
-			return temp;
-		});
-	};
-
-	const playPrevious = () => {
-		setCurrentSongIndex(() => {
-			let temp = currentSongIndex;
-			temp--;
-			if (temp < 0) {
-				temp = songs.length - 1;
-			}
-			return temp;
-		});
-	};
 
 	return (
 		<div className={classes.root}>
@@ -62,14 +32,14 @@ function ListenningCardCenter(props) {
 					justify="space-evenly"
 					alignItems="center"
 				>
-					<PreviousButton onPlayPrevious={playPrevious} />
+					{/* <PreviousButton onPlayPrevious={playPrevious} /> */}
 
 					<PlayPauseButton audio={audio} audioState={audioState} />
 
-					<NextButton onPlayNext={playNext} />
+					{/* <NextButton onPlayNext={playNext} /> */}
 				</Grid>
 				<Grid item xs={12}>
-					<TimelineControl audio={audio} />
+					<TimelineControl audio={audio} audioState={audioState} />
 				</Grid>
 			</Grid>
 		</div>
@@ -77,17 +47,21 @@ function ListenningCardCenter(props) {
 }
 
 ListenningCardCenter.propTypes = {
-	songs: PropTypes.array,
-	song: PropTypes.object,
-	setCurrentSongIndex: PropTypes.func,
-	currentSongIndex: PropTypes.number,
+	audio: PropTypes.any,
+	audioState: PropTypes.string,
+	// songs: PropTypes.array,
+	// song: PropTypes.object,
+	// setCurrentSongIndex: PropTypes.func,
+	// currentSongIndex: PropTypes.number,
 };
 
 ListenningCardCenter.deafultProps = {
-	songs: null,
-	song: null,
-	setCurrentSongIndex: null,
-	currentSongIndex: null,
+	audio: null,
+	audioState: "",
+	// songs: null,
+	// song: null,
+	// setCurrentSongIndex: null,
+	// currentSongIndex: null,
 };
 
 export default ListenningCardCenter;

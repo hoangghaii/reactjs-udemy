@@ -1,13 +1,14 @@
 import axios from "axios";
 
 const BASE_API = "https://theaudiodb.p.rapidapi.com/";
+const ROOT_API = " http://ws.audioscrobbler.com/2.0/";
 
 const axiosClient = axios.create({
-	baseURL: BASE_API,
-	headers: {
-		"x-rapidapi-key": "9532c743e6msh52ca14f9c5e774ap19ed2cjsn0c1648da1632",
-		"x-rapidapi-host": "theaudiodb.p.rapidapi.com",
-	},
+	baseURL: ROOT_API,
+	// headers: {
+	// 	"x-rapidapi-key": "9532c743e6msh52ca14f9c5e774ap19ed2cjsn0c1648da1632",
+	// 	"x-rapidapi-host": "theaudiodb.p.rapidapi.com",
+	// },
 });
 
 //Interceptors

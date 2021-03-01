@@ -21,6 +21,11 @@ const theme = createMuiTheme({
 function App() {
 	return (
 		<ThemeProvider theme={theme}>
+			<audio
+				id="audio-element"
+				autoPlay
+				src="https://www.last.fm/music/Imagine+Dragons/_/Believer"
+			></audio>
 			{/* <Player
 			//   currentSongIndex={currentSongIndex}
 			//   setCurrentSongIndex={setCurrentSongIndex}

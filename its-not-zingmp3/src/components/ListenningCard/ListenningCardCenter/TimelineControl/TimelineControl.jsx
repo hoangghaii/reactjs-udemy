@@ -42,6 +42,7 @@ const formatTime = (secs) => {
 
 function TimelineControl(props) {
 	const { audio, audioState } = props;
+	// console.log(audio.currentTime);
 	const [currentTime, setCurrentTime] = useState(0);
 
 	useEffect(() => {

@@ -1,3 +1,4 @@
+import { Credentials } from "../constants/Credentials";
 import axiosClient from "./axiosClient";
 
 const musicApi = {
@@ -41,6 +42,24 @@ const musicApi = {
 		const url = "/album";
 		try {
 			return await axiosClient.patch(url, data);
+		} catch (error) {
+			return error;
+		}
+	},
+
+	async artistTopAlbum(params) {
+		const url = `?method=artist.gettopalbums&artist=${params}&api_key=${Credentials.APIKey}&format=json`;
+		try {
+			return await axiosClient.get(url);
+		} catch (error) {
+			return error;
+		}
+	},
+
+	async searchTrack(params) {
+		const url = `?method=track.search&track=${params}&api_key=${Credentials.APIKey}&format=json`;
+		try {
+			return await axiosClient.get(url);
 		} catch (error) {
 			return error;
 		}

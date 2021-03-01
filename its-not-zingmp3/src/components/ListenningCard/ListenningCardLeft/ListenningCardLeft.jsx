@@ -38,25 +38,25 @@ function ListenningCardLeft(props) {
 		<div className={classes.root}>
 			<Grid
 				container
-				spacing={3}
+				spacing={1}
 				direction="row"
 				justify="space-evenly"
 				alignItems="center"
 			>
-				<Grid item xs={4}>
+				<Grid item xs={3}>
 					<Avatar
-						alt={song.desc}
-						src={getSongImage(song.img_src)}
+						alt={song.image[3]["#text"]}
+						src={song.image[3]["#text"]}
 						className={classes.large}
 					/>
 				</Grid>
 
-				<Grid item xs={6}>
-					<h4>{song.title}</h4>
+				<Grid item xs={8}>
+					<h4>{song.name}</h4>
 					<p>{song.artist}</p>
 				</Grid>
 
-				<Grid item xs={2}>
+				<Grid item xs={1}>
 					<div onClick={addLiked}>
 						{isLiked === true && <FavoriteIcon color="primary" />}
 						{isLiked === false && (
