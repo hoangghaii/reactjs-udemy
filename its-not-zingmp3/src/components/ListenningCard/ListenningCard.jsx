@@ -56,8 +56,9 @@ function ListenningCard(props) {
 	const [currentSongIndex, setCurrentSongIndex] = useState(0);
 	const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
 
-	const audioPlayer = useRef();
+	const audioPlayer = useRef(null);
 	const audio = audioPlayer.current;
+	console.log("audio ListenningCard: ", audio);
 
 	const getSongAudio = (songSrc) => {
 		return process.env.PUBLIC_URL + "assets/music/" + songSrc;
@@ -89,7 +90,6 @@ function ListenningCard(props) {
 					<Grid item xs={6}>
 						<ListenningCardCenter
 							songs={songs}
-							song={songs[currentSongIndex]}
 							currentSongIndex={currentSongIndex}
 							setCurrentSongIndex={setCurrentSongIndex}
 							audio={audio}

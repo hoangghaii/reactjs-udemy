@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 function ListenningCardCenter(props) {
 	const { audio, songs, setCurrentSongIndex, currentSongIndex } = props;
-
+	console.log(audio);
 	const classes = useStyles();
 
 	const [audioState, setAudioState] = useState("pause");
@@ -64,16 +64,12 @@ function ListenningCardCenter(props) {
 				>
 					<PreviousButton onPlayPrevious={playPrevious} />
 
-					<PlayPauseButton
-						audio={audio}
-						audioState={audioState}
-						onClick={handlePlayPause}
-					/>
+					<PlayPauseButton audio={audio} audioState={audioState} />
 
 					<NextButton onPlayNext={playNext} />
 				</Grid>
 				<Grid item xs={12}>
-					<TimelineControl />
+					<TimelineControl audio={audio} />
 				</Grid>
 			</Grid>
 		</div>
