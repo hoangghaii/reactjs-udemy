@@ -5,17 +5,23 @@ import BannerItem from "../BannerItem/BannerItem";
 
 function BannerSlider(props) {
 	const [dataBanner, setDataBanner] = useState("");
-	// const [dataSlider, setDataSlider] = useState("");
+	const [dataSlider, setDataSlider] = useState(null);
 
 	useEffect(() => {
 		(async () => {
 			const dataBanner = await cocktailApi.getAllPopular();
 			setDataBanner(dataBanner.data.drinks.slice(0, 1));
-
-			// const dataSlider = await cocktailApi.getAllCategory();
-			// setDataSlider(dataSlider.data.drinks);
 		})();
 	}, []);
+
+	useEffect(() => {
+		(async () => {
+			const data = await cocktailApi.getAllCategory();
+			setDataSlider(data.data.drinks);
+			// setDataSlider(data.data.drinks);
+		})();
+	}, []);
+	console.log(dataSlider);
 
 	return (
 		<Fragment>

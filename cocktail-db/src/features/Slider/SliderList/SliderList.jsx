@@ -11,15 +11,22 @@ import usePrevious from "./../../../hooks/usePrevious";
 function SliderList(props) {
 	// const { dataSlider } = props;
 	// console.log(dataSlider);
-	const [dataSlider, setDataSlider] = useState("");
+	const [dataSlider, setDataSlider] = useState(null);
 
 	// const prevData = usePrevious(dataSlider);
 	// console.log(prevData);
 
+	const dataAfterFetch = async () => {
+		return await cocktailApi.getAllCategory();
+	};
+	console.log(dataAfterFetch());
+
+	// setDataSlider(dataAfterFetch());
 	useEffect(() => {
 		(async () => {
-			const dataSlider = await cocktailApi.getAllCategory();
-			setDataSlider(dataSlider.data.drinks);
+			const data = await cocktailApi.getAllCategory();
+			console.log(data);
+			setDataSlider(data);
 		})();
 	}, []);
 
@@ -36,7 +43,8 @@ function SliderList(props) {
 
 	let content;
 	if (dataSlider) {
-		content = dataSlider.map((data, index) => (
+		const dataList = dataSlider.data.drinks;
+		content = dataList.map((data, index) => (
 			<SliderItem
 				key={index}
 				data={data}
