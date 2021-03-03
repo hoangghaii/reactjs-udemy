@@ -1,0 +1,68 @@
+.loading-wrapper {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	min-height: 100px;
+}
+
+.container {
+	width: 164px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	// margin: 0 auto;
+
+	span {
+		width: 15px;
+		height: 20px;
+		position: absolute;
+		top: 40%;
+		transform: translateY(-50%);
+		left: 0;
+		display: block;
+		background-color: #9b5986;
+		animation: Loading 3s infinite ease-in-out;
+
+		&:nth-of-type(2) {
+			left: 25px;
+			animation-delay: 0.2s;
+		}
+
+		&:nth-of-type(3) {
+			left: 55px;
+			animation-delay: 0.4s;
+		}
+
+		&:nth-of-type(4) {
+			left: 85px;
+			animation-delay: 0.6s;
+		}
+
+		&:last-of-type {
+			left: 115px;
+			animation-delay: 0.8s;
+		}
+
+		@keyframes Loading {
+			0% {
+				height: 20px;
+				transform: scaleY();
+				background-color: #9b59b6;
+			}
+
+			50% {
+				height: 20px;
+				transform: scaleY(3.4);
+				background-color: #3498d6;
+			}
+
+			100% {
+				height: 20px;
+				transform: scaleY();
+				background-color: #9b59b6;
+			}
+		}
+	}
+}

@@ -6,6 +6,8 @@ import { faChevronCircleDown } from "@fortawesome/free-solid-svg-icons";
 import SliderList from "./SliderList/SliderList";
 
 function Slider(props) {
+	// const { dataSlider } = props;
+
 	return (
 		<>
 			<div className="flex mt-12 items-end">
@@ -16,10 +18,13 @@ function Slider(props) {
 					alt=""
 				/>
 				<button className="ml-auto rounded-full p-2 bg-orange-600 hover:bg-orange-500 hover:shadow-lg text-white cursor-pointer text-sm">
-					<FontAwesomeIcon icon={faClock} mx-2 />
+					<FontAwesomeIcon icon={faClock} className="mx-2" />
 					<span className="font-hairline">Delivery: </span>
 					<span>Now</span>
-					<FontAwesomeIcon icon={faChevronCircleDown} mx-2 />
+					<FontAwesomeIcon
+						icon={faChevronCircleDown}
+						className="mx-2"
+					/>
 				</button>
 			</div>
 			<SliderList />

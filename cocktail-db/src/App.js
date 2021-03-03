@@ -1,3 +1,6 @@
+import { Fragment } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import HeaderIndex from "./components/Header/HeaderIndex";
 import Banner from "./features/Banner/Banner";
@@ -6,17 +9,32 @@ import Slider from "./features/Slider/Slider";
 
 function App() {
 	return (
-		<div className="flex" id="dribbleShot">
-			<div className="main px-16 border-r border-gray-200">
-				<HeaderIndex />
+		<Fragment>
+			<div className="flex" id="dribbleShot">
+				<div className="main px-16 border-r border-gray-200">
+					<HeaderIndex />
 
-				<Banner />
+					<Banner />
 
-				<Slider />
+					<Slider />
 
-				<Product />
+					<Product />
+				</div>
 			</div>
-		</div>
+
+			<ToastContainer
+				limit={3}
+				position="bottom-right"
+				autoClose={5000}
+				hideProgressBar
+				newestOnTop
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss={false}
+				draggable={false}
+				pauseOnHover
+			/>
+		</Fragment>
 	);
 }
 
