@@ -2,7 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function SliderItem(props) {
-	const { data } = props;
+	const { data, handleSetSliceIdx } = props;
+
+	const handleSetIndex = () => {
+		if (!handleSetSliceIdx) return;
+		handleSetSliceIdx();
+	};
 
 	const css =
 		"border rounded-full p-2 flex flex-col items-center shadow-xl cursor-pointer transition-colors duration-700 ease-in-out";
@@ -11,6 +16,7 @@ function SliderItem(props) {
 		<div
 			className="border rounded-full p-2 flex flex-col items-center shadow-xl cursor-pointer transition-colors duration-700 ease-in-out"
 			style={{ width: "65.55px" }}
+			onClick={handleSetIndex}
 		>
 			<div className="border rounded-full p-2 bg-white">
 				<img
@@ -19,7 +25,7 @@ function SliderItem(props) {
 					src={process.env.PUBLIC_URL + "/assets/martini.svg"}
 				/>
 			</div>
-			<p className="mt-3 mb-10 font-bold  text-xs">{data.strCategory}</p>
+			<p className="mt-3 mb-10 font-bold text-xs">{data.strCategory}</p>
 		</div>
 	);
 }

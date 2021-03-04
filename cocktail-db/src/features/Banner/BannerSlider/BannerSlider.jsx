@@ -5,7 +5,6 @@ import BannerItem from "../BannerItem/BannerItem";
 
 function BannerSlider(props) {
 	const [dataBanner, setDataBanner] = useState("");
-	const [dataSlider, setDataSlider] = useState(null);
 
 	useEffect(() => {
 		(async () => {
@@ -13,15 +12,6 @@ function BannerSlider(props) {
 			setDataBanner(dataBanner.data.drinks.slice(0, 1));
 		})();
 	}, []);
-
-	useEffect(() => {
-		(async () => {
-			const data = await cocktailApi.getAllCategory();
-			setDataSlider(data.data.drinks);
-			// setDataSlider(data.data.drinks);
-		})();
-	}, []);
-	console.log(dataSlider);
 
 	return (
 		<Fragment>

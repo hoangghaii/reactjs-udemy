@@ -4,7 +4,7 @@ import ProductList from "./ProductList/ProductList";
 
 function Product(props) {
 	return (
-		<div className="mt-12 grid grid-cols-3 gap-10">
+		<div className="mt-12 grid grid-cols-6 gap-10">
 			<ProductList />
 		</div>
 	);

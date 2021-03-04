@@ -20,8 +20,7 @@ const cocktailApi = {
 		}
 	},
 
-	async filterBy(data) {
-		const params = { i: data };
+	async filterBy(params) {
 		const url = `filter.php`;
 		try {
 			return await axiosClient.get(url, { params });

@@ -2,51 +2,36 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function ProductItem(props) {
+	const { data } = props;
+
 	return (
-		<div className="flex flex-col" v-for="food in foodItems">
-			<div className="shadow-lg relative h-40 custom-rounded">
-				<div className="absolute bottom-0 left-0 w-1/3 bg-gray-200 rounded-tr-lg p-2 text-center text-xs">
-					<span className="font-bold">
-						{"{"}
-						{"{"}food.prepTimeValue{"}"}
-						{"}"}
-					</span>{" "}
-					{"{"}
-					{"{"}food.prepTimeUnit{"}"}
-					{"}"}
+		<div className="flex flex-col">
+			<div className="shadow-lg relative h-60  custom-rounded">
+				<div
+					className="absolute bottom-0 left-0 bg-gray-200 rounded-tr-lg p-2 text-center text-xs w-full h-full"
+					style={{
+						backgroundSize: "cover",
+						backgroundRepeat: "no-repeat",
+						backgroundPosition: "center",
+						backgroundImage: `url(${data.strDrinkThumb})`,
+					}}
+				>
+					<span className="font-medium absolute bottom-2 left-2 text-white">
+						<b>idDrink: </b> {data.idDrink}
+					</span>
 				</div>
 			</div>
-			<p className="mt-4 font-medium">
-				{"{"}
-				{"{"}food.title{"}"}
-				{"}"}
-			</p>
-			<div className="mt-2 flex items-center">
-				<span className="text-xs">
-					<i className="fa fa-star" /> {"{"}
-					{"{"}food.rating{"}"}
-					{"}"}
-				</span>
-				<span className="text-gray-600 font-hairline text-xs mx-4">
-					{"{"}
-					{"{"}food.cat1{"}"}
-					{"}"}
-				</span>
-				<span className="text-gray-600 font-hairline text-xs mx-4">
-					{"{"}
-					{"{"}food.cat2{"}"}
-					{"}"}
-				</span>
-				<span className="text-gray-600 font-hairline text-xs mx-4">
-					{"{"}
-					{"{"}food.range{"}"}
-					{"}"}
-				</span>
-			</div>
+			<p className="mt-4 font-medium">{data.strDrink}</p>
 		</div>
 	);
 }
 
-ProductItem.propTypes = {};
+ProductItem.propTypes = {
+	data: PropTypes.object,
+};
+
+ProductItem.defaultProps = {
+	data: null,
+};
 
 export default ProductItem;
