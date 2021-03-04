@@ -8,10 +8,12 @@ function ProductList(props) {
 	const [dataProductOriginal, setDataProductOriginal] = useState();
 
 	const sliderIndex = useSelector((state) => state.slider.value);
+	const keywordParam = sliderIndex.payload || "Ordinary Drink";
 
 	useEffect(() => {
 		(async () => {
-			const params = { c: sliderIndex.payload };
+			const params = { c: keywordParam };
+			// const params = { c: "Cocktail" };
 			const dataFetched = await cocktailApi.filterBy(params);
 			setDataProduct(dataFetched.data.drinks.slice(0, 6));
 			setDataProductOriginal(dataFetched.data.drinks);
@@ -20,7 +22,8 @@ function ProductList(props) {
 
 	return (
 		<Fragment>
-			{dataProduct !== "Non" &&
+			{dataProduct &&
+				dataProduct !== "Non" &&
 				dataProduct.map((data, index) => (
 					<ProductItem key={index} data={data} />
 				))}

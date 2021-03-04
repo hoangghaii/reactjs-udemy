@@ -20,6 +20,15 @@ const cocktailApi = {
 		}
 	},
 
+	async getRandomCockTail() {
+		const url = "randomselection.php";
+		try {
+			return await axiosClient.get(url);
+		} catch (error) {
+			return error;
+		}
+	},
+
 	async filterBy(params) {
 		const url = `filter.php`;
 		try {

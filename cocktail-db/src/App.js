@@ -6,21 +6,39 @@ import HeaderIndex from "./components/Header/HeaderIndex";
 import Banner from "./features/Banner/Banner";
 import Product from "./features/Product/Product";
 import Slider from "./features/Slider/Slider";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
 	return (
 		<Fragment>
-			<div className="flex" id="dribbleShot">
-				<div className="main px-16 border-r border-gray-200">
-					<HeaderIndex />
+			<Router>
+				<div className="flex" id="dribbleShot">
+					<div className="main px-16 border-r border-gray-200">
+						<HeaderIndex />
 
-					<Banner />
+						{/* <Banner />
 
-					<Slider />
+						<Slider />
 
-					<Product />
+						<Product /> */}
+						<Switch>
+							<Route
+								exact
+								path=""
+								render={() => (
+									<Fragment>
+										<Banner />
+										<Slider />
+										<Product />
+									</Fragment>
+								)}
+							/>
+
+							<Route exact path="/product" component={Product} />
+						</Switch>
+					</div>
 				</div>
-			</div>
+			</Router>
 
 			<ToastContainer
 				limit={3}

@@ -11,7 +11,8 @@ function HeaderIndex(props) {
 	const [dataRespond, setDataRespond] = useState("");
 
 	const getDataBy = async (value) => {
-		const dataRes = await cocktailApi.filterBy(value);
+		const params = { i: value };
+		const dataRes = await cocktailApi.filterBy(params);
 
 		if (dataRes) {
 			setDataRespond(dataRes.data.drinks);

@@ -1,5 +1,3 @@
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import SliderItem from "../SliderItem/SliderItem";
@@ -14,7 +12,7 @@ function SliderList(props) {
 	useEffect(() => {
 		(async () => {
 			const dataFetched = await cocktailApi.getAllCategory();
-			setDataSlider(dataFetched.data.drinks.slice(0, 11));
+			setDataSlider(dataFetched.data.drinks);
 
 			dispatch(setSliceIndex(dataFetched.data.drinks[0].strCategory));
 		})();
@@ -27,7 +25,7 @@ function SliderList(props) {
 	};
 
 	return (
-		<div className="grid grid-cols-9 md:grid-cols-12 gap-6 md:gap-0 mt-12">
+		<div className="grid grid-cols-12 md:grid-cols-12 gap-6 md:gap-0 mt-12">
 			{dataSlider &&
 				dataSlider.map((data, index) => (
 					<SliderItem
@@ -36,10 +34,6 @@ function SliderList(props) {
 						handleSetSliceIdx={() => handleSetSliceIdx(data)}
 					/>
 				))}
-
-			<button className="h-10 rounded-lg self-center hover:shadow-xl flex justify-center items-center bg-gray-100 p-3 ml-auto">
-				<FontAwesomeIcon icon={faChevronRight} />
-			</button>
 		</div>
 	);
 }

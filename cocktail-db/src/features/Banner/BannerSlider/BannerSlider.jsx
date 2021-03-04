@@ -8,9 +8,21 @@ function BannerSlider(props) {
 
 	useEffect(() => {
 		(async () => {
-			const dataBanner = await cocktailApi.getAllPopular();
+			const dataBanner = await cocktailApi.getRandomCockTail();
 			setDataBanner(dataBanner.data.drinks.slice(0, 1));
 		})();
+	}, []);
+
+	useEffect(() => {
+		const randomCockTail = setInterval(() => {
+			(async () => {
+				const dataBanner = await cocktailApi.getRandomCockTail();
+				setDataBanner(dataBanner.data.drinks.slice(0, 1));
+			})();
+		}, 10000);
+		return () => {
+			clearInterval(randomCockTail);
+		};
 	}, []);
 
 	return (
