@@ -6,7 +6,7 @@ function ProductItem(props) {
 	const { data } = props;
 
 	return (
-		<Link to={`/product/${data.strDrink}`}>
+		<Link to={`/product/${data.idDrink}`}>
 			<div className="flex flex-col">
 				<div className="shadow-lg relative h-60  custom-rounded">
 					<div

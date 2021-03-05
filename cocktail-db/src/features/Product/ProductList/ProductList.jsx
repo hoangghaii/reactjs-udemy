@@ -13,12 +13,11 @@ function ProductList(props) {
 	useEffect(() => {
 		(async () => {
 			const params = { c: keywordParam };
-			// const params = { c: "Cocktail" };
 			const dataFetched = await cocktailApi.filterBy(params);
 			setDataProduct(dataFetched.data.drinks.slice(0, 6));
 			setDataProductOriginal(dataFetched.data.drinks);
 		})();
-	}, [sliderIndex]);
+	}, [keywordParam, sliderIndex]);
 
 	return (
 		<Fragment>

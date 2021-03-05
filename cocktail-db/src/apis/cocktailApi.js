@@ -38,6 +38,17 @@ const cocktailApi = {
 		}
 	},
 
+	async getDetail(data) {
+		const url = `lookup.php`;
+		const params = { i: data };
+
+		try {
+			return await axiosClient.get(url, { params });
+		} catch (error) {
+			return error;
+		}
+	},
+
 	async search(params) {
 		const url = "earch.php";
 		try {

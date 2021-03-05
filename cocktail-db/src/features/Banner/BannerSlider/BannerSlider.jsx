@@ -19,7 +19,7 @@ function BannerSlider(props) {
 				const dataBanner = await cocktailApi.getRandomCockTail();
 				setDataBanner(dataBanner.data.drinks.slice(0, 1));
 			})();
-		}, 10000);
+		}, 20000);
 		return () => {
 			clearInterval(randomCockTail);
 		};

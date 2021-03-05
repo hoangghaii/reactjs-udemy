@@ -1,12 +1,13 @@
 import { Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import HeaderIndex from "./components/Header/HeaderIndex";
 import Banner from "./features/Banner/Banner";
 import Product from "./features/Product/Product";
+import ProductCard from "./features/Product/ProductCard/ProductCard";
 import Slider from "./features/Slider/Slider";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
 	return (
@@ -16,15 +17,10 @@ function App() {
 					<div className="main px-16 border-r border-gray-200">
 						<HeaderIndex />
 
-						{/* <Banner />
-
-						<Slider />
-
-						<Product /> */}
 						<Switch>
 							<Route
 								exact
-								path=""
+								path="/"
 								render={() => (
 									<Fragment>
 										<Banner />
@@ -34,7 +30,11 @@ function App() {
 								)}
 							/>
 
-							<Route exact path="/product" component={Product} />
+							<Route
+								exact
+								path="/product/:id"
+								component={ProductCard}
+							/>
 						</Switch>
 					</div>
 				</div>

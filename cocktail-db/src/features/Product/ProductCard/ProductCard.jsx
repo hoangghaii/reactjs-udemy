@@ -4,83 +4,67 @@ import cocktailApi from "../../../apis/cocktailApi";
 import { useParams } from "react-router-dom";
 
 function ProductCard(props) {
-	const name = useParams();
-
-	console.log(name);
+	const id = useParams();
 
 	const [dataProduct, setDataProduct] = useState();
 
 	useEffect(() => {
 		(async () => {
-			const params = { i: name };
-			const dataFetched = await cocktailApi.filterBy(params);
-			// setDataProduct(dataFetched.data.drinks.slice(0, 6));
-			setDataProduct(dataFetched.data.ingredients);
+			const dataFetched = await cocktailApi.getDetail(id.id);
+			setDataProduct(dataFetched.data.drinks[0]);
 		})();
-	}, [name]);
+	}, [id]);
 
-	console.log(dataProduct);
+	const renderIngredient = () => {
+		let str = "";
+		for (let i = 1; i <= 15; i++) {
+			let strIngredient = `strIngredient${i}`;
+			if (dataProduct[strIngredient] !== null) {
+				str += `${dataProduct[strIngredient]}, `;
+			}
+		}
+		return str;
+	};
 
 	return (
-		<div className="py-6">
-			<h1>Product Card Page</h1>
-			{/* <div className="flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
-				<div
-					className="w-1/3 bg-cover"
-					style={{
-						backgroundImage: `url(${product.img})`,
-					}}
-				></div>
-				<div className="w-2/3 p-4">
-					<h1 className="text-gray-900 font-bold text-2xl">
-               {product.img}
-					</h1>
-					<p className="mt-2 text-gray-600 text-sm">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit
-						In odit exercitationem fuga id nam quia
-					</p>
-					<div className="flex item-center mt-2">
-						<svg
-							className="w-5 h-5 fill-current text-gray-700"
-							viewBox="0 0 24 24"
-						>
-							<path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-						</svg>
-						<svg
-							className="w-5 h-5 fill-current text-gray-700"
-							viewBox="0 0 24 24"
-						>
-							<path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-						</svg>
-						<svg
-							className="w-5 h-5 fill-current text-gray-700"
-							viewBox="0 0 24 24"
-						>
-							<path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-						</svg>
-						<svg
-							className="w-5 h-5 fill-current text-gray-500"
-							viewBox="0 0 24 24"
-						>
-							<path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-						</svg>
-						<svg
-							className="w-5 h-5 fill-current text-gray-500"
-							viewBox="0 0 24 24"
-						>
-							<path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-						</svg>
+		<div className="p-10 py-20">
+			{dataProduct && (
+				<div className="w-full rounded overflow-hidden shadow-lg">
+					<img
+						className="w-full h-96 object-cover object-center"
+						src={dataProduct.strDrinkThumb}
+						alt={dataProduct.strDrink}
+					/>
+
+					<div className="px-6 py-4">
+						<div className="font-bold text-xl mb-2">
+							{dataProduct.strDrink}
+						</div>
+						<p className="text-gray-700 text-base">
+							{dataProduct.strInstructions}
+						</p>
 					</div>
-					<div className="flex item-center justify-between mt-3">
-						<h1 className="text-gray-700 font-bold text-xl">
-							$220
-						</h1>
-						<button className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">
-							Add to Card
-						</button>
+
+					<div className="px-6 py-4">
+						<span className="font-bold text-xl">Ingredient: </span>
+						<p className="text-gray-700 text-base">
+							{renderIngredient()}
+						</p>
+					</div>
+
+					<div className="px-6 pt-4 pb-2">
+						<span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+							{dataProduct.strCategory}
+						</span>
+						<span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+							{dataProduct.strAlcoholic}
+						</span>
+						<span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+							{dataProduct.strGlass}
+						</span>
 					</div>
 				</div>
-			</div> */}
+			)}
 		</div>
 	);
 }
