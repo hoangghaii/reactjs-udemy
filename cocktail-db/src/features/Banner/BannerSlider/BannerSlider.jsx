@@ -1,38 +1,38 @@
 import React, { Fragment, useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import cocktailApi from "./../../../apis/cocktailApi";
+import Loading from "../../../components/Loading/Loading";
 import BannerItem from "../BannerItem/BannerItem";
+import BannerLoading from "../BannerLoading/BannerLoading";
+import cocktailApi from "./../../../apis/cocktailApi";
 
 function BannerSlider(props) {
-	const [dataBanner, setDataBanner] = useState("");
+	const [state, setState] = useState({
+		dataBanner: "",
+		loading: true,
+	});
 
 	useEffect(() => {
 		(async () => {
 			const dataBanner = await cocktailApi.getRandomCockTail();
-			setDataBanner(dataBanner.data.drinks.slice(0, 1));
+			setState({
+				dataBanner: dataBanner.data.drinks.slice(0, 1),
+				loading: false,
+			});
 		})();
 	}, []);
 
-	useEffect(() => {
-		const randomCockTail = setInterval(() => {
-			(async () => {
-				const dataBanner = await cocktailApi.getRandomCockTail();
-				setDataBanner(dataBanner.data.drinks.slice(0, 1));
-			})();
-		}, 20000);
-		return () => {
-			clearInterval(randomCockTail);
-		};
-	}, []);
+	let content = "";
+	if (state.loading) {
+		content = <Loading></Loading>;
+	} else if (state.dataBanner) {
+		const data = state.dataBanner;
 
-	return (
-		<Fragment>
-			{dataBanner &&
-				dataBanner.map((data, index) => (
-					<BannerItem key={index} data={data} />
-				))}
-		</Fragment>
-	);
+		content = data.map((data, index) => (
+			<BannerItem key={index} data={data} />
+		));
+	}
+
+	return <BannerLoading />;
+	// return <Fragment>{content}</Fragment>;
 }
 
 BannerSlider.propTypes = {};

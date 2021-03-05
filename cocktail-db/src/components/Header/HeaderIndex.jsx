@@ -6,6 +6,7 @@ import cocktailApi from "./../../apis/cocktailApi";
 import SearchResult from "./Search/SearchResult/SearchResult";
 import Loading from "./../Loading/Loading";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 function HeaderIndex(props) {
 	const [dataRespond, setDataRespond] = useState("");
@@ -50,7 +51,11 @@ function HeaderIndex(props) {
 		<Fragment>
 			<div className="h-12 mt-8 flex items-center">
 				<Hambuger />
-				<h6 className="font-bold text-lg mx-10">CockTail-DB</h6>
+
+				<Link to="/">
+					<h6 className="font-bold text-lg mx-10">CockTail-DB</h6>
+				</Link>
+
 				<Search onSubmit={onSubmit} />
 			</div>
 
