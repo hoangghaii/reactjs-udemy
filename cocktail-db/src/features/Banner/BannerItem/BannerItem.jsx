@@ -8,7 +8,7 @@ function BannerItem(props) {
 	const { data } = props;
 
 	return (
-		<div className="grid grid-cols-3 bg-orange-100 mt-12 rounded-lg">
+		<div className="grid grid-cols-3 bg-orange-100 mt-12 rounded-lg h-64 w-full">
 			<div className="px-5 py-4">
 				<img
 					src={data.strDrinkThumb}
