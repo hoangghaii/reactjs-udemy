@@ -8,12 +8,12 @@ function BannerItem(props) {
 	const { data } = props;
 
 	return (
-		<div className="grid grid-cols-3 bg-orange-100 mt-12 rounded-lg h-64 w-full">
+		<div className="grid grid-cols-3 bg-orange-100 mt-12 rounded-lg w-full">
 			<div className="px-5 py-4">
 				<img
 					src={data.strDrinkThumb}
 					alt={data.strDrinkThumb}
-					className="self-end rounded-lg"
+					className="rounded-lg max-w-full h-auto object-cover object-center"
 				/>
 			</div>
 			<div className="row-auto flex flex-col justify-center ml-6">

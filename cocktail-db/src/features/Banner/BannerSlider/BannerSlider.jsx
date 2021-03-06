@@ -22,7 +22,7 @@ function BannerSlider(props) {
 
 	let content = "";
 	if (state.loading) {
-		content = <Loading></Loading>;
+		content = <BannerLoading />;
 	} else if (state.dataBanner) {
 		const data = state.dataBanner;
 
@@ -31,8 +31,7 @@ function BannerSlider(props) {
 		));
 	}
 
-	return <BannerLoading />;
-	// return <Fragment>{content}</Fragment>;
+	return <Fragment>{content}</Fragment>;
 }
 
 BannerSlider.propTypes = {};
