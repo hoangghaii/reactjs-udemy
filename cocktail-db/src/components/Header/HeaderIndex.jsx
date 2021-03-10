@@ -1,12 +1,10 @@
-import React, { Fragment, useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import React, { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import cocktailApi from "./../../apis/cocktailApi";
 import Hambuger from "./Hambuger/Hambuger";
 import Search from "./Search/Search";
-import cocktailApi from "./../../apis/cocktailApi";
 import SearchResult from "./Search/SearchResult/SearchResult";
-import Loading from "./../Loading/Loading";
-import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
 
 function HeaderIndex(props) {
 	const [dataRespond, setDataRespond] = useState("");

@@ -1,8 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import SignUpForm from "../../auth/SignUp/SignUpForm";
-import { toast } from "react-toastify";
 import emailjs from "emailjs-com";
+import React from "react";
+import { toast } from "react-toastify";
+import SignUpForm from "../../auth/SignUp/SignUpForm";
 import GmailService from "./../../constants/gmail-service";
 
 function Footer(props) {

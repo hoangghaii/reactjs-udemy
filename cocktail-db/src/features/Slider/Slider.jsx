@@ -1,8 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import {
+	faChevronCircleDown,
+	faClock,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
-import { faChevronCircleDown } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
 import SliderList from "./SliderList/SliderList";
 
 function Slider(props) {

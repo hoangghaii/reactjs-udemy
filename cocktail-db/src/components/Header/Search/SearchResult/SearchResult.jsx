@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 function SearchResult(props) {
 	const { data } = props;
