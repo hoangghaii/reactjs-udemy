@@ -1,5 +1,6 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
+import { useSelector } from "react-redux";
 
 function SliderItem(props) {
 	const { data, handleSetSliceIdx } = props;
@@ -9,12 +10,17 @@ function SliderItem(props) {
 		handleSetSliceIdx();
 	};
 
-	const css =
+	const sliderSelected = useSelector((state) => state.slider.current);
+
+	let css =
 		"border rounded-full p-2 flex flex-col items-center shadow-xl cursor-pointer transition-colors duration-700 ease-in-out";
+	if (sliderSelected.payload === data.strCategory) {
+		css += " text-white bg-orange-600";
+	}
 
 	return (
 		<div
-			className="border rounded-full p-2 flex flex-col items-center shadow-xl cursor-pointer transition-colors duration-700 ease-in-out"
+			className={css}
 			style={{ width: "65.55px" }}
 			onClick={handleSetIndex}
 		>

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Fragment, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import cocktailApi from "../../../apis/cocktailApi";
 import ProductCardLoading from "./ProductCardLoading";
 

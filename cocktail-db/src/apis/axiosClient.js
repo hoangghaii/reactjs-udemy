@@ -4,7 +4,6 @@ const ROOT_API = "https://the-cocktail-db.p.rapidapi.com/";
 
 const axiosClient = axios.create({
 	baseURL: ROOT_API,
-	// baseURL: environment.EZ_BASE_URL,
 	headers: {
 		"Content-Type": "application/json",
 		"x-rapidapi-key": "9532c743e6msh52ca14f9c5e774ap19ed2cjsn0c1648da1632",

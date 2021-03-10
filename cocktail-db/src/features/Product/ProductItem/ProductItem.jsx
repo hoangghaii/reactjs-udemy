@@ -8,7 +8,7 @@ function ProductItem(props) {
 	return (
 		<Link to={`/product/${data.idDrink}`}>
 			<div className="flex flex-col">
-				<div className="shadow-lg relative h-60  custom-rounded">
+				<div className="shadow-lg relative h-60 custom-rounded">
 					<div
 						className="absolute bottom-0 left-0 bg-gray-200 rounded-tr-lg p-2 text-center text-xs w-full h-full"
 						style={{

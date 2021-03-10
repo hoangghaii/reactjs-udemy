@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SliderItem from "../SliderItem/SliderItem";
 import { setSliceIndex } from "../sliderSlice";
 import cocktailApi from "./../../../apis/cocktailApi";
@@ -9,14 +9,24 @@ function SliderList(props) {
 
 	const [dataSlider, setDataSlider] = useState(null);
 
+	const sliderSelected = useSelector((state) => state.slider.current);
+
 	useEffect(() => {
 		(async () => {
 			const dataFetched = await cocktailApi.getAllCategory();
 			setDataSlider(dataFetched.data.drinks);
 
-			dispatch(setSliceIndex(dataFetched.data.drinks[0].strCategory));
+			let action;
+
+			if (!sliderSelected) {
+				action = setSliceIndex(dataFetched.data.drinks[0].strCategory);
+			} else {
+				action = setSliceIndex(sliderSelected.payload);
+			}
+
+			dispatch(action);
 		})();
-	}, []);
+	}, [dispatch, sliderSelected]);
 
 	const handleSetSliceIdx = (data) => {
 		const action = setSliceIndex(data.strCategory);

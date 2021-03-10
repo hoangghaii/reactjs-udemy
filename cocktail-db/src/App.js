@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import Footer from "./components/Footer/Footer";
 import HeaderIndex from "./components/Header/HeaderIndex";
 import Banner from "./features/Banner/Banner";
 import Product from "./features/Product/Product";
@@ -14,28 +15,32 @@ function App() {
 		<Fragment>
 			<Router>
 				<div className="flex" id="dribbleShot">
-					<div className="main px-16 border-r border-gray-200">
-						<HeaderIndex />
+					<div className="main">
+						<div className="px-16">
+							<HeaderIndex />
 
-						<Switch>
-							<Route
-								exact
-								path="/"
-								render={() => (
-									<Fragment>
-										<Banner />
-										<Slider />
-										<Product />
-									</Fragment>
-								)}
-							/>
+							<Switch>
+								<Route
+									exact
+									path="/"
+									render={() => (
+										<Fragment>
+											<Banner />
+											<Slider />
+											<Product />
+										</Fragment>
+									)}
+								/>
 
-							<Route
-								exact
-								path="/product/:id"
-								component={ProductCard}
-							/>
-						</Switch>
+								<Route
+									exact
+									path="/product/:id"
+									component={ProductCard}
+								/>
+							</Switch>
+						</div>
+
+						<Footer />
 					</div>
 				</div>
 			</Router>
