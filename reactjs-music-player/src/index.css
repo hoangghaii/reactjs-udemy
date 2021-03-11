@@ -152,7 +152,7 @@ body {
 }
 .trending .left .artist,
 .trending .left .view,
-.trending .left .type {
+.type {
 	color: #ffffff;
 	font-size: 1em;
 	font-weight: 1000;
@@ -161,10 +161,10 @@ body {
 	font-size: 1.2em;
 	margin-bottom: 5px;
 }
-.trending .left .type {
+.type {
 	font-size: 1.5em;
 }
-.trending .left .type {
+.type {
 	margin-bottom: 50px;
 	color: #fff !important;
 }
@@ -177,6 +177,7 @@ body {
 	border-radius: 30px;
 	margin-top: 20px;
 	background: linear-gradient(to right, #14314d, #151515);
+	cursor: pointer;
 }
 .btn-play:hover {
 	box-shadow: 5px 10px 18px #14314d;

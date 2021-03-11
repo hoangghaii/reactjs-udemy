@@ -1,8 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setCurrentSong } from "../Player/playerSlice";
 import musicApi from "./../../apis/musicApi";
 import PlaceHolder from "./PlaceHolder/PlaceHolder";
 
 function Header(props) {
+	const dispatch = useDispatch();
+
 	const [trending, setTrending] = useState({
 		loading: true,
 		data: null,
@@ -23,6 +27,19 @@ function Header(props) {
 			});
 		})();
 	}, []);
+
+	const handleSetPlayer = (data) => {
+		const dataDetail = {
+			title: data.title,
+			subtitle: data.subtitle,
+			image: data.images.coverarthq,
+			image_alt: data.share.subject,
+			url: data.url,
+		};
+
+		const action = setCurrentSong(dataDetail);
+		dispatch(action);
+	};
 
 	let content = "";
 	if (trending.loading) {
@@ -47,9 +64,12 @@ function Header(props) {
 							{dataDetail.sections[0].metadata[2].title}{" "}
 							{dataDetail.sections[0].metadata[2].text}
 						</p>
-						<a href="#0" className="btn-play">
+						<span
+							className="btn-play"
+							onClick={() => handleSetPlayer(data)}
+						>
 							Play Now
-						</a>
+						</span>
 					</div>
 					<div className="right">
 						<img
