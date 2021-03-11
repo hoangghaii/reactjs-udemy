@@ -13,7 +13,7 @@ const musicApi = {
 	},
 
 	async getTopSongs(key = 484129036) {
-		const url = `songs/list-recommendations`;
+		const url = "songs/list-recommendations";
 		const params = { key: key, locale: "en-US" };
 
 		try {
@@ -23,30 +23,12 @@ const musicApi = {
 		}
 	},
 
-	async searchAutoComplete(string) {
-		const url = `auto-complete`;
-		const params = { term: string, locale: "en-US" };
+	async getDetail(id) {
+		const url = "songs/get-details";
+		const params = { key: id, locale: "en-US" };
 
 		try {
-			return await axiosClient.post(url, { params });
-		} catch (error) {
-			return error;
-		}
-	},
-
-	async update(data) {
-		const url = `/products/${data.id}`;
-		try {
-			return await axiosClient.patch(url, { data });
-		} catch (error) {
-			return error;
-		}
-	},
-
-	async remove(id) {
-		const url = `/products/${id}`;
-		try {
-			return await axiosClient.delete(url);
+			return await axiosClient.get(url, { params });
 		} catch (error) {
 			return error;
 		}

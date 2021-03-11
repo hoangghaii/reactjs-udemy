@@ -153,16 +153,20 @@ body {
 .trending .left .artist,
 .trending .left .view,
 .trending .left .type {
-	color: #d7d7d7;
+	color: #ffffff;
 	font-size: 1em;
 	font-weight: 1000;
 }
-.trending .left .artist,
+.trending .left .artist {
+	font-size: 1.2em;
+	margin-bottom: 5px;
+}
 .trending .left .type {
 	font-size: 1.5em;
 }
 .trending .left .type {
 	margin-bottom: 50px;
+	color: #fff !important;
 }
 .btn-play {
 	color: #ffffff;
