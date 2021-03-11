@@ -4,7 +4,9 @@ import { env } from "./../env/env";
 const axiosClient = axios.create({
 	baseURL: env.MUSIC_API_ENDPOINT,
 	headers: {
+		"Access-Control-Allow-Origin": "*",
 		"Content-Type": "application/json",
+		Accept: "application/json",
 		"x-rapidapi-key": "9532c743e6msh52ca14f9c5e774ap19ed2cjsn0c1648da1632",
 		"x-rapidapi-host": "shazam.p.rapidapi.com",
 	},

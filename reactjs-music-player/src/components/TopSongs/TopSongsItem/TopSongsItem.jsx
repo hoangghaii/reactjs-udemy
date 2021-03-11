@@ -2,7 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function TopSongsItem(props) {
-	const { dataSong } = props;
+	const { dataSong, handleSetPlayer } = props;
+
+	const handlePlayer = () => {
+		if (!handleSetPlayer) return;
+		handleSetPlayer();
+	};
 
 	return (
 		<div className="song">
@@ -16,19 +21,21 @@ function TopSongsItem(props) {
 				<span>{dataSong.subtitle}</span>
 			</div>
 			<span className="song-time">3.56 min</span>
-			<a href="#0" className="btn-song-play">
+			<span className="btn-song-play" onClick={handlePlayer}>
 				<i className="far fa-play-circle" />
-			</a>
+			</span>
 		</div>
 	);
 }
 
 TopSongsItem.propTypes = {
 	dataSong: PropTypes.object,
+	handleSetPlayer: PropTypes.func,
 };
 
 TopSongsItem.defaultProps = {
 	dataSong: null,
+	handleSetPlayer: null,
 };
 
 export default TopSongsItem;

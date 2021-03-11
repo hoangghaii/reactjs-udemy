@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setCurrentSong } from "../Player/playerSlice";
 import musicApi from "./../../apis/musicApi";
 import TopSongsItem from "./TopSongsItem/TopSongsItem";
 
 function TopSongs(props) {
+	const dispatch = useDispatch();
+
 	const [dataRespond, setDataRespond] = useState({
 		loading: true,
 		data: null,
@@ -19,6 +23,19 @@ function TopSongs(props) {
 		})();
 	}, []);
 
+	const handleSetPlayer = (data) => {
+		const dataDetail = {
+			title: data.title,
+			subtitle: data.subtitle,
+			image: data.images.coverarthq,
+			image_alt: data.share.subject,
+			url: data.url,
+		};
+
+		const action = setCurrentSong(dataDetail);
+		dispatch(action);
+	};
+
 	let content = "";
 
 	if (dataRespond.loading) {
@@ -27,7 +44,11 @@ function TopSongs(props) {
 		const datas = dataRespond.data;
 
 		content = datas.map((data, index) => (
-			<TopSongsItem key={index} dataSong={data} />
+			<TopSongsItem
+				key={index}
+				dataSong={data}
+				handleSetPlayer={() => handleSetPlayer(data)}
+			/>
 		));
 	}
 

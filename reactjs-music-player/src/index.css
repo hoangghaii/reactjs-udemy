@@ -51,7 +51,7 @@ body {
 	height: 30%;
 	display: flex;
 	flex-direction: column;
-	justify-content: start;
+	justify-content: flex-start;
 	align-items: flex-start;
 }
 .menu a,
@@ -125,6 +125,7 @@ body {
 	justify-content: space-between;
 }
 .bottom-content .right-side {
+	padding: 1rem 0;
 	width: 30%;
 	border-radius: 15px;
 	background: linear-gradient(to bottom, #303030, #151515);
@@ -274,6 +275,7 @@ body {
 	color: #ffffff;
 	font-size: 1.1em;
 	font-weight: 500;
+	cursor: pointer;
 }
 .left-side-bottom .left {
 	display: flex;
@@ -432,8 +434,8 @@ body {
 }
 .adp-img {
 	margin-top: 20px;
-	width: 200px;
-	height: 200px;
+	width: 220px;
+	height: 220px;
 	border-radius: 20px;
 	transition: ease-in-out 1s;
 }
@@ -443,6 +445,7 @@ body {
 	align-items: center;
 }
 .adp-title {
+	margin-top: 1rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -466,15 +469,16 @@ body {
 .adp-action {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
-	margin-top: 50px;
+	margin-top: 30px;
 }
 .adp-action i {
 	font-size: 2em;
 	color: #ffffff;
 }
-.adp-action a {
+.adp-action span {
+	cursor: pointer;
 	margin: 0 20px;
 }
 .adp-action i:hover {
