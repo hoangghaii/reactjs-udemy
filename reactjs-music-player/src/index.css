@@ -476,14 +476,20 @@ body {
 .adp-action i {
 	font-size: 2em;
 	color: #ffffff;
+	cursor: pointer;
 }
 .adp-action span {
-	cursor: pointer;
 	margin: 0 20px;
 }
 .adp-action i:hover {
 	color: #d7d7d7;
 	font-weight: 1000;
+}
+#previous,
+#next {
+	width: 34px;
+	height: 32px;
+	display: block;
 }
 @keyframes hide {
 	0% {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCurrentSong } from "../Player/playerSlice";
 import musicApi from "./../../apis/musicApi";
+import PlaceHolder from "./PlaceHolder/PlaceHolder";
 import TopSongsItem from "./TopSongsItem/TopSongsItem";
 
 function TopSongs(props) {
@@ -39,7 +40,8 @@ function TopSongs(props) {
 	let content = "";
 
 	if (dataRespond.loading) {
-		content = <p>Loading....</p>;
+		const dataMock = [1, 2, 3, 4];
+		content = dataMock.map((index) => <PlaceHolder key={index} />);
 	} else if (dataRespond.data) {
 		const datas = dataRespond.data;
 
@@ -56,6 +58,7 @@ function TopSongs(props) {
 		<div className="right">
 			<p>Top Songs</p>
 			<div className="songs">{content}</div>
+			{/* <PlaceHolder /> */}
 		</div>
 	);
 }
