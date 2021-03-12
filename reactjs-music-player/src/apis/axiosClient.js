@@ -3,12 +3,14 @@ import { env } from "./../env/env";
 
 const axiosClient = axios.create({
 	baseURL: env.MUSIC_API_ENDPOINT,
+	timeout: 10000,
 	headers: {
-		"Content-Type": "application/json",
+		Accept: "application/json, */*, text/html",
+		// "Content-Type": "text/html",
 		"Cross-Origin-Embedder-Policy": "require-corp",
 		"Cross-Origin-Opener-Policy": "same-origin",
 		"Access-Control-Allow-Origin": "*",
-		"Access-Control-Allow-Methods": "PUT, GET, POST",
+		"Access-Control-Allow-Methods": "PUT, GET, POST, DELETE",
 		"Access-Control-Allow-Headers":
 			"Origin, X-Requested-With, Content-Type, Accept",
 		"x-rapidapi-key": "9532c743e6msh52ca14f9c5e774ap19ed2cjsn0c1648da1632",

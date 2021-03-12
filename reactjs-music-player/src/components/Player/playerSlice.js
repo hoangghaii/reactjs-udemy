@@ -11,10 +11,19 @@ const playerSlice = createSlice({
 	reducers: {
 		setCurrentSong: (state, song) => {
 			state.current = song;
-			state.listSongs.push(song);
+		},
+
+		setListSong: (state, song) => {
+			if (
+				state.listSongs &&
+				state.listSongs.find((ele) => ele.id === song.payload["id"])
+			)
+				return;
+
+			state.listSongs.push(song.payload);
 		},
 	},
 });
 
-export const { setCurrentSong } = playerSlice.actions;
+export const { setCurrentSong, setListSong } = playerSlice.actions;
 export default playerSlice.reducer;

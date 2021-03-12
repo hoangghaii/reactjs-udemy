@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setCurrentSong } from "../Player/playerSlice";
+import { setCurrentSong, setListSong } from "../Player/playerSlice";
 import musicApi from "./../../apis/musicApi";
+import { setPlayer } from "./../../common/SetPlayer";
 import PlaceHolder from "./PlaceHolder/PlaceHolder";
 import TopSongsItem from "./TopSongsItem/TopSongsItem";
 
@@ -25,16 +26,10 @@ function TopSongs(props) {
 	}, []);
 
 	const handleSetPlayer = (data) => {
-		const dataDetail = {
-			title: data.title,
-			subtitle: data.subtitle,
-			image: data.images.coverarthq,
-			image_alt: data.share.subject,
-			url: data.url,
-		};
+		const dataDetail = setPlayer(data);
 
-		const action = setCurrentSong(dataDetail);
-		dispatch(action);
+		dispatch(setCurrentSong(dataDetail));
+		dispatch(setListSong(dataDetail));
 	};
 
 	let content = "";

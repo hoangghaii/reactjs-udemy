@@ -1,12 +1,13 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Loading from "./PlayerLoadingPlaceHolder/Loading";
+import { setCurrentSong } from "./playerSlice";
 
 function Player(props) {
+	const dispatch = useDispatch();
 	const player = useSelector((state) => state.player.current);
 
 	const listSongs = useSelector((state) => state.player.listSongs);
-	console.log(listSongs);
 
 	const [hasPlayer, setHasPlayer] = useState();
 
@@ -47,6 +48,54 @@ function Player(props) {
 		setPlay(!isPlay);
 	};
 
+	const findPlayerIndex = () => {
+		return listSongs.findIndex((ele) => ele.id === player.payload["id"]);
+	};
+
+	const renderPrevButton = () => {
+		const index = findPlayerIndex();
+
+		if (listSongs && listSongs.length > 1 && index <= 0) {
+			return <span id="previous" />;
+		} else if (listSongs && listSongs.length > 1) {
+			return (
+				<span id="previous" onClick={handlePrevios}>
+					<i className="fas fa-backward" />
+				</span>
+			);
+		}
+	};
+
+	const handlePrevios = () => {
+		const index = findPlayerIndex();
+		const action = setCurrentSong(listSongs[index - 1]);
+		dispatch(action);
+	};
+
+	const renderNextButton = () => {
+		const index = findPlayerIndex();
+
+		if (
+			listSongs &&
+			listSongs.length > 1 &&
+			index >= listSongs.length - 1
+		) {
+			return <span id="next" />;
+		} else if (listSongs && listSongs.length > 1) {
+			return (
+				<span id="next" onClick={handleNext}>
+					<i className="fas fa-forward" />
+				</span>
+			);
+		}
+	};
+
+	const handleNext = () => {
+		const index = findPlayerIndex();
+		const action = setCurrentSong(listSongs[index + 1]);
+		dispatch(action);
+	};
+
 	let content = <Loading />;
 
 	if (hasPlayer && hasPlayer !== undefined) {
@@ -56,7 +105,6 @@ function Player(props) {
 			<Fragment>
 				<audio
 					ref={audioRef}
-					autoPlay
 					src={currentPlayer.url}
 					onLoadedData={handleLoadedData}
 					onTimeUpdate={() => {
@@ -67,6 +115,7 @@ function Player(props) {
 
 				<div className="right-side">
 					<p className="adp-card-title">Now Playing</p>
+
 					<div className="audio-player">
 						<img
 							src={currentPlayer.image}
@@ -79,12 +128,9 @@ function Player(props) {
 							<p>{currentPlayer.subtitle}</p>
 						</div>
 					</div>
+
 					<div className="adp-action">
-						<span id="previous">
-							{listSongs && listSongs.length > 0 && (
-								<i className="fas fa-backward" />
-							)}
-						</span>
+						{renderPrevButton()}
 
 						<span id="play" onClick={handlePlayPause}>
 							{isPlay ? (
@@ -94,11 +140,7 @@ function Player(props) {
 							)}
 						</span>
 
-						<span id="next">
-							{listSongs && listSongs.length > 0 && (
-								<i className="fas fa-forward" />
-							)}
-						</span>
+						{renderNextButton()}
 					</div>
 				</div>
 			</Fragment>
