@@ -9,52 +9,52 @@ function SideBar(props) {
 			</div>
 			<div className="menu">
 				<p>Menu</p>
-				<a href="#0" className="menu-active">
+				<span className="menu-active slidebar-link">
 					<i className="fas fa-home" />
 					Home
-				</a>
-				<a href="#0">
+				</span>
+				<span className="slidebar-link">
 					<i className="fas fa-compass" />
 					Discover
-				</a>
-				<a href="#0">
+				</span>
+				<span className="slidebar-link">
 					<i className="fas fa-heart" />
 					Favorite
-				</a>
-				<a href="#0">
+				</span>
+				<span className="slidebar-link">
 					<i className="fas fa-search" />
 					Search
-				</a>
+				</span>
 			</div>
 			<div className="library">
 				<p>Library</p>
-				<a href="#0">
+				<span className="slidebar-link">
 					<i className="fas fa-compact-disc" />
 					Singles
-				</a>
-				<a href="#0">
+				</span>
+				<span className="slidebar-link">
 					<i className="fas fa-compact-disc" />
 					Albums
-				</a>
-				<a href="#0">
+				</span>
+				<span className="slidebar-link">
 					<i className="fas fa-music" />
 					Artist
-				</a>
+				</span>
 			</div>
 			<div className="my-playlist">
 				<p>My Playlist</p>
-				<a href="#0">
+				<span className="slidebar-link">
 					<i className="fas fa-bookmark" />
 					English Song
-				</a>
-				<a href="#0">
+				</span>
+				<span className="slidebar-link">
 					<i className="fas fa-bookmark" />
 					Hindi Plays
-				</a>
-				<a href="#0">
+				</span>
+				<span className="slidebar-link">
 					<i className="fas fa-bookmark" />
 					Bangia Songs
-				</a>
+				</span>
 			</div>
 		</div>
 	);

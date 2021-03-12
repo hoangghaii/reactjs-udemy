@@ -1,0 +1,152 @@
+@mixin mainFlex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+$ghostWhite: #f4f4f8;
+$lightGrey: #e6e6ea;
+$darkGrey: #6b6b6e;
+$darkAqua: #009fb7;
+$tomatoRed: #fe4a49;
+
+.search-container {
+	width: 70%;
+	height: 60vh;
+	background: $ghostWhite;
+	border-radius: 1.2rem;
+	padding: 1rem;
+
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	.input-wrapper {
+		@include mainFlex;
+		// width: 80%;
+		height: 3rem;
+		margin: 0 1rem;
+		background: $ghostWhite;
+		box-sizing: border-box;
+		border-bottom: 1px solid #bdc3c7;
+
+		i {
+			font-size: 1.1rem;
+			color: #3498db;
+		}
+
+		#product-search {
+			width: 80%;
+			height: 100%;
+			font-size: 1.4rem;
+			color: #7f8c8d;
+			padding-left: 1rem;
+			background: $ghostWhite;
+			border: none;
+			outline: none;
+
+			transition: all 0.3s;
+
+			&::placeholder {
+				color: #7f8c8d;
+				opacity: 0.7;
+			}
+		}
+
+		.fa-times {
+			cursor: pointer;
+		}
+	}
+
+	#product-search:focus {
+		width: 100%;
+		animation: animation-width 0.5s;
+	}
+
+	.btn-esc {
+		border-radius: 0.375rem;
+		background-color: #e9e9e9;
+		border: 1px solid #d1d5db;
+		color: #7f8c8d;
+		padding: 0.25rem 0.5rem;
+
+		transition: all 0.25s;
+		cursor: pointer;
+
+		&:hover {
+			box-shadow: 0 0.5rem 1.5rem rgba(#000, 0.2);
+			background-color: #e6e6e6;
+		}
+	}
+
+	.search-recent {
+		font-size: 1.2rem;
+		font-weight: 500;
+		color: #636e72;
+		padding-top: 1rem;
+		padding-left: 1rem;
+	}
+
+	.results-wrapper {
+		width: 100%;
+		margin-top: 0.5rem;
+		box-sizing: border-box;
+		color: #636e72;
+		display: flex;
+		justify-content: space-between;
+
+		&--list {
+			width: 100%;
+
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1rem 1.5rem;
+			margin: 0.2rem 0;
+			background-color: rgba(#bdc3c7, 0.2);
+			border-radius: 0.5rem;
+
+			cursor: pointer;
+			transition: all 0.25s;
+		}
+
+		&--text {
+			color: #273c75;
+			font-size: 1.1rem;
+			font-weight: 500;
+			transition: all 0.25s;
+		}
+
+		&--icon {
+			color: #636e72;
+			transition: all 0.25s;
+
+			&__history {
+				margin-right: 1.5rem;
+			}
+		}
+
+		&--list:hover {
+			background-color: #3498db;
+		}
+
+		&--list:hover .results-wrapper--text {
+			color: #fff;
+		}
+
+		&--list:hover .results-wrapper--icon {
+			color: #fff;
+		}
+	}
+}
+
+@keyframes animation-width {
+	0% {
+		width: 80%;
+	}
+
+	100% {
+		width: 100%;
+	}
+}

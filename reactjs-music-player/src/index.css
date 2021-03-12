@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 :host {
 	--color-text: #ffffff;
 }
@@ -10,8 +9,7 @@
 }
 
 body {
-	font-family: "Roboto", sans-serif;
-	letter-spacing: 2px;
+	font-family: "Poppins", sans-serif;
 }
 .container {
 	display: flex;
@@ -54,9 +52,9 @@ body {
 	justify-content: flex-start;
 	align-items: flex-start;
 }
-.menu a,
-.library a,
-.my-playlist a {
+.menu .slidebar-link,
+.library .slidebar-link,
+.my-playlist .slidebar-link {
 	color: #d7d7d7;
 	outline: none;
 	text-decoration: none;
@@ -64,10 +62,11 @@ body {
 	font-weight: 500;
 	font-size: 1em;
 	width: 80%;
+	cursor: pointer;
 }
-.menu a:hover,
-.library a:hover,
-.my-playlist a:hover {
+.menu .slidebar-link:hover,
+.library .slidebar-link:hover,
+.my-playlist .slidebar-link:hover {
 	color: #ffffff;
 	border-radius: 7px;
 	background-color: #2d659b;
