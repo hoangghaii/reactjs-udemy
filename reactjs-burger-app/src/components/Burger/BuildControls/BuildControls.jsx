@@ -11,7 +11,7 @@ const controls = [
 ];
 
 function BuildControls(props) {
-	const { handleRemoveIngredient, handleAddIngredient } = props;
+	const { price, handleRemoveIngredient, handleAddIngredient } = props;
 
 	const onRemoveIngredient = (type) => {
 		if (!handleRemoveIngredient) return;
@@ -25,19 +25,24 @@ function BuildControls(props) {
 
 	return (
 		<div className={classes.BuildControls}>
+			<p>{price}</p>
+
 			{controls.map((control) => (
 				<BuildControl
-					key={control.label}
+					key={control.type}
 					label={control.label}
 					handleRemoveIngredient={onRemoveIngredient}
 					handleAddIngredient={onAddIngredient}
 				/>
 			))}
+
+			<button>ORDER NOW: </button>
 		</div>
 	);
 }
 
 BuildControls.propTypes = {
+	price: PropTypes.number,
 	handleRemoveIngredient: PropTypes.func,
 	handleAddIngredient: PropTypes.func,
 };

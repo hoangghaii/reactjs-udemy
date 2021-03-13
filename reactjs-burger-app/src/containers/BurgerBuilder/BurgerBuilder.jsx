@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Aux from "../../Auxiliary/Auxiliary";
 import Burger from "../../components/Burger/Burger";
@@ -26,23 +26,50 @@ function BurgerBuilder(props) {
 
 		switch (typeLower) {
 			case "salad":
-				setIngredient({ ...ingredient, salad: ingredient.salad - 1 });
-				setPrice(price + INGREDIENT_PRICE.salad * ingredient.salad);
+				if (ingredient.salad === 0) return;
+				else {
+					setIngredient({
+						...ingredient,
+						salad: ingredient.salad - 1,
+					});
+					setPrice(price - INGREDIENT_PRICE.salad * ingredient.salad);
+				}
+
 				break;
 
 			case "bacon":
-				setIngredient({ ...ingredient, bacon: ingredient.bacon - 1 });
-				setPrice(price + INGREDIENT_PRICE.bacon * ingredient.bacon);
+				if (ingredient.bacon === 0) return;
+				else {
+					setIngredient({
+						...ingredient,
+						bacon: ingredient.bacon - 1,
+					});
+					setPrice(price - INGREDIENT_PRICE.bacon * ingredient.bacon);
+				}
+
 				break;
 
 			case "cheese":
-				setIngredient({ ...ingredient, cheese: ingredient.cheese - 1 });
-				setPrice(price + INGREDIENT_PRICE.cheese * ingredient.cheese);
+				if (ingredient.cheese === 0) return;
+				else {
+					setIngredient({
+						...ingredient,
+						cheese: ingredient.cheese - 1,
+					});
+					setPrice(
+						price - INGREDIENT_PRICE.cheese * ingredient.cheese
+					);
+				}
+
 				break;
 
 			case "meat":
-				setIngredient({ ...ingredient, meat: ingredient.meat - 1 });
-				setPrice(price + INGREDIENT_PRICE.meat * ingredient.meat);
+				if (ingredient.meat === 0) return;
+				else {
+					setIngredient({ ...ingredient, meat: ingredient.meat - 1 });
+					setPrice(price - INGREDIENT_PRICE.meat * ingredient.meat);
+				}
+
 				break;
 
 			default:
@@ -56,22 +83,18 @@ function BurgerBuilder(props) {
 		switch (typeLower) {
 			case "salad":
 				setIngredient({ ...ingredient, salad: ingredient.salad + 1 });
-				setPrice(price + INGREDIENT_PRICE.salad * ingredient.salad);
 				break;
 
 			case "bacon":
 				setIngredient({ ...ingredient, bacon: ingredient.bacon + 1 });
-				setPrice(price + INGREDIENT_PRICE.bacon * ingredient.bacon);
 				break;
 
 			case "cheese":
 				setIngredient({ ...ingredient, cheese: ingredient.cheese + 1 });
-				setPrice(price + INGREDIENT_PRICE.cheese * ingredient.cheese);
 				break;
 
 			case "meat":
 				setIngredient({ ...ingredient, meat: ingredient.meat + 1 });
-				setPrice(price + INGREDIENT_PRICE.meat * ingredient.meat);
 				break;
 
 			default:
@@ -79,14 +102,25 @@ function BurgerBuilder(props) {
 		}
 	};
 
+	useEffect(() => {
+		setPrice(
+			4 +
+				(INGREDIENT_PRICE.salad * ingredient.salad +
+					INGREDIENT_PRICE.bacon * ingredient.bacon +
+					INGREDIENT_PRICE.cheese * ingredient.cheese +
+					INGREDIENT_PRICE.meat * ingredient.meat)
+		);
+	}, [ingredient]);
+
 	return (
 		<Aux>
 			<Burger ingredient={ingredient} />
+
 			<BuildControls
+				price={price}
 				handleRemoveIngredient={handleRemoveIngredient}
 				handleAddIngredient={handleAddIngredient}
 			/>
-			{price}
 		</Aux>
 	);
 }
