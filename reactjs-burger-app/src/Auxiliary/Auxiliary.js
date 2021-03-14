@@ -1,16 +1,16 @@
 import PropTypes from "prop-types";
 
-function Auxiliary(props) {
+function Aux(props) {
 	const { children } = props;
 	return children;
 }
 
-Auxiliary.propTypes = {
+Aux.propTypes = {
 	children: PropTypes.any,
 };
 
-Auxiliary.defaultProps = {
+Aux.defaultProps = {
 	children: null,
 };
 
-export default Auxiliary;
+export default Aux;

@@ -1,21 +1,12 @@
 import React from "react";
-import PropTypes from "prop-types";
+import Aux from "./../../Auxiliary/Auxiliary";
 import classes from "./Layout.css";
-import Aux from "../../Auxiliary/Auxiliary";
 
-function Layout(props) {
-	const { children } = props;
+const layout = (props) => (
+	<Aux>
+		<div>Toolbar, SideDrawer, Backdrop</div>
+		<main className={classes.Content}>{props.children}</main>
+	</Aux>
+);
 
-	return (
-		<Aux>
-			<div>Toolbar, SideDrawn, Backdrop</div>
-			<main className={classes.Content}>{children}</main>
-		</Aux>
-	);
-}
-
-Layout.propTypes = {
-	children: PropTypes.any,
-};
-
-export default Layout;
+export default layout;

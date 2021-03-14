@@ -1,44 +1,27 @@
-import PropTypes from "prop-types";
 import React from "react";
 import classes from "./Burger.css";
 import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
 
-function Burger(props) {
-	const { ingredient } = props;
-
-	let transformdIngredient = Object.keys(ingredient)
+const burger = (props) => {
+	let transformedIngredients = Object.keys(props.ingredients)
 		.map((igKey) => {
-			return [...Array(ingredient[igKey])].map((_, i) => {
-				return <BurgerIngredient type={igKey} key={igKey + i} />;
+			return [...Array(props.ingredients[igKey])].map((_, i) => {
+				return <BurgerIngredient key={igKey + i} type={igKey} />;
 			});
 		})
 		.reduce((arr, el) => {
 			return arr.concat(el);
 		}, []);
-
-	// console.log(transformdIngredient);
-
-	if (transformdIngredient.length === 0) {
-		transformdIngredient = <p>Please adding ingredients!</p>;
+	if (transformedIngredients.length === 0) {
+		transformedIngredients = <p>Please start adding ingredients!</p>;
 	}
-
 	return (
 		<div className={classes.Burger}>
 			<BurgerIngredient type="bread-top" />
-
-			{transformdIngredient}
-
+			{transformedIngredients}
 			<BurgerIngredient type="bread-bottom" />
 		</div>
 	);
-}
-
-Burger.propTypes = {
-	ingredient: PropTypes.object,
 };
 
-Burger.defaultProps = {
-	ingredient: null,
-};
-
-export default Burger;
+export default burger;
