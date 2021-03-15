@@ -1,22 +1,22 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Logo from "../../UI/Logo/Logo";
 import NavigationItems from "../NavigationItems/NavigationItems";
-import classes from "./ToolBar.css";
+import classes from "./SideDrawer.css";
 
-function ToolBar(props) {
+function SideDrawer(props) {
 	return (
-		<header className={classes.ToolBar}>
-			<div>MENU</div>
+		<div className={classes.SideDrawer}>
 			<div className={classes.Logo}>
 				<Logo />
 			</div>
-			<nav className={classes.DesktopOnly}>
+			<nav>
 				<NavigationItems />
 			</nav>
-		</header>
+		</div>
 	);
 }
 
-ToolBar.propTypes = {};
+SideDrawer.propTypes = {};
 
-export default ToolBar;
+export default SideDrawer;
