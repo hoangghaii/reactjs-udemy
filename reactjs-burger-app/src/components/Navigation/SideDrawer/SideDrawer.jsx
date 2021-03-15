@@ -1,22 +1,36 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
+import Backdrop from "../../UI/Backdrop/Backdrop";
 import Logo from "../../UI/Logo/Logo";
 import NavigationItems from "../NavigationItems/NavigationItems";
+import Aux from "./../../../Auxiliary/Auxiliary";
 import classes from "./SideDrawer.css";
 
 function SideDrawer(props) {
+	const { closed, open } = props;
+	let attachedClasses = [classes.SideDrawer, classes.Close];
+
+	if (open) {
+		attachedClasses = [classes.SideDrawer, classes.Open];
+	}
+
 	return (
-		<div className={classes.SideDrawer}>
-			<div className={classes.Logo}>
-				<Logo />
+		<Aux>
+			<Backdrop show={open} clicked={closed} />
+			<div className={attachedClasses.join(" ")}>
+				<div className={classes.Logo}>
+					<Logo />
+				</div>
+				<nav>
+					<NavigationItems />
+				</nav>
 			</div>
-			<nav>
-				<NavigationItems />
-			</nav>
-		</div>
+		</Aux>
 	);
 }
 
-SideDrawer.propTypes = {};
+SideDrawer.propTypes = {
+	closed: PropTypes.func,
+};
 
 export default SideDrawer;
