@@ -1,7 +1,7 @@
 import axios from "axios";
-import { history } from "..";
+import { history } from "../App";
 
-const ROOT_API = "https://react-my-burger-25807-default-rtdbbb.firebaseio.com/";
+const ROOT_API = "https://react-my-burger-25807-default-rtdb.firebaseio.com/";
 
 const axiosClient = axios.create({
 	baseURL: ROOT_API,
@@ -30,6 +30,7 @@ axiosClient.interceptors.response.use(
 	function (response) {
 		// Any status code that lie within the range of 2xx cause this function to trigger
 		// Do something with response data
+		history.push("/");
 		return response;
 	},
 	function (error) {
@@ -41,22 +42,22 @@ axiosClient.interceptors.response.use(
 			// that falls out of the range of 2xx
 
 			const responseStatus = error.response.status;
+			console.log(responseStatus);
+			// if (responseStatus === 403) {
+			// 	history.push("/access-forbidden");
+			// }
 
-			if (responseStatus === 403) {
-				history.push("/access-forbidden");
-			}
+			// if (responseStatus === 404) {
+			// 	history.push("/not-found");
+			// }
 
-			if (responseStatus === 404) {
-				history.push("/not-found");
-			}
+			// if (responseStatus === 408) {
+			// 	history.push("/time-out");
+			// }
 
-			if (responseStatus === 408) {
-				history.push("/time-out");
-			}
-
-			if (responseStatus === 500) {
-				history.push("/internal-error");
-			}
+			// if (responseStatus === 500) {
+			// 	history.push("/internal-error");
+			// }
 		} else if (error.request) {
 			// The request was made but no response was received
 			// `error.request` is an instance of XMLHttpRequest in the browser and an instance of
