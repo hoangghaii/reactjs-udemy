@@ -1,14 +1,14 @@
 import { createBrowserHistory } from "history";
 import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import AccessForbidden from "./components/Error/403Page/403Page";
-import NotFound from "./components/Error/404Page/NotFound";
-import TimeOut from "./components/Error/408Page/TimeOut";
-import InternalError from "./components/Error/500Page/InternalError";
-import Layout from "./components/Layout/Layout";
+// import AccessForbidden from "./components/Error/403Page/403Page";
+// import NotFound from "./components/Error/404Page/NotFound";
+// import TimeOut from "./components/Error/408Page/TimeOut";
+// import InternalError from "./components/Error/500Page/InternalError";
 import BurgerBuilder from "./containers/BurgerBuilder/BurgerBuilder";
+import Layout from "./hoc/Layout/Layout";
 
 export const history = createBrowserHistory();
 

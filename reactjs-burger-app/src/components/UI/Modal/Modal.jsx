@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import Aux from "../../../Auxiliary/Auxiliary";
+import Aux from "../../../hoc/Auxiliary/Auxiliary";
 import Backdrop from "../Backdrop/Backdrop";
 import classes from "./Modal.css";
 
@@ -26,12 +26,8 @@ function Modal(props) {
 
 Modal.propTypes = {
 	children: PropTypes.any,
-	show: PropTypes.bool,
+	show: PropTypes.any,
 	modalClosed: PropTypes.func,
-};
-
-Modal.defaultProps = {
-	show: false,
 };
 
 export default Modal;

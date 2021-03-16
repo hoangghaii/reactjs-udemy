@@ -5,8 +5,9 @@ import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 import Modal from "../../components/UI/Modal/Modal";
 // import { toast } from "react-toastify";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import Aux from "../../hoc/Auxiliary/Auxiliary";
 import burgerApi from "./../../apis/burgerApi";
-import Aux from "./../../Auxiliary/Auxiliary";
+import withErrorHandle from "./../../hoc/WithErrorHandle/WithErrorHandle";
 
 const INGREDIENT_PRICES = {
 	salad: 0.5,
@@ -166,4 +167,4 @@ class BurgerBuilder extends Component {
 	}
 }
 
-export default BurgerBuilder;
+export default withErrorHandle(BurgerBuilder);

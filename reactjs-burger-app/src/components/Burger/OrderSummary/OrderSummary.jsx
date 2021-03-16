@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import Aux from "../../../Auxiliary/Auxiliary";
+import Aux from "../../../hoc/Auxiliary/Auxiliary";
 import Button from "./../../UI/Button/Button";
 
 function OrderSummary(props) {
