@@ -1,8 +1,8 @@
 import axiosClient from "./axiosClient";
 
 const burgerApi = {
-	async getAllPopular() {
-		const url = "popular.php";
+	async getIngredients() {
+		const url = "ingredients.json";
 		try {
 			return await axiosClient.get(url);
 		} catch (error) {
