@@ -4,6 +4,8 @@ import Burger from "../../components/Burger/Burger";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 import Modal from "../../components/UI/Modal/Modal";
 import Aux from "./../../Auxiliary/Auxiliary";
+import burgerApi from "./../../apis/burgerApi";
+import { toast } from "react-toastify";
 
 const INGREDIENT_PRICES = {
 	salad: 0.5,
@@ -86,8 +88,39 @@ class BurgerBuilder extends Component {
 		this.setState({ purchasing: false });
 	};
 
-	purchaseContinuelHalder = () => {
-		alert("You continue!");
+	purchaseContinuelHalder = async () => {
+		const order = {
+			ingredients: this.state.ingredients,
+			price: this.state.totalPrice,
+			customer: {
+				name: "Max Schwarmuller",
+				address: {
+					street: "Test streeet 1",
+					zipCode: "41351",
+					country: "Germany",
+				},
+				email: "testemail@gmail.com",
+			},
+			deliveryMethod: "fastest",
+		};
+
+		const dataRespond = await burgerApi.purchaseBurger(order);
+		console.log(dataRespond);
+		if (dataRespond.status === 200) {
+			toast.success(
+				<div>
+					<h4>Success!!!</h4>
+					<p>You have purchase a Burger</p>
+				</div>
+			);
+		} else {
+			toast.error(
+				<div>
+					<h4>Error</h4>
+					<p>Opps!! Something went wrong, pls try later</p>
+				</div>
+			);
+		}
 	};
 
 	render() {
