@@ -1,0 +1,27 @@
+/* ================= Project Section ================= */
+.project {
+	&__content-wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__content {
+		width: 50%;
+	}
+
+	.heading-2 {
+		margin: 0 0 1rem 0;
+	}
+
+	&__img-box {
+		&-1 {
+			width: 40%;
+			height: 20rem;
+		}
+
+		&-2 {
+			margin-top: 5rem;
+		}
+	}
+}

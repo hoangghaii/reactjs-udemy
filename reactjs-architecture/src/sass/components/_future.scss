@@ -1,0 +1,41 @@
+/* ================== Future Section ================= */
+.future {
+	&__content-wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		& > * {
+			width: 45%;
+		}
+	}
+
+	&__content {
+		& > *:first-child {
+			margin-bottom: 2rem;
+		}
+	}
+
+	&__counter {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		&--item {
+			text-align: center;
+		}
+
+		&--number {
+			font-size: 9rem;
+		}
+
+		&--text {
+			margin-top: -1rem;
+			font-size: 1.7rem;
+		}
+	}
+
+	&__img-box {
+		height: 40rem;
+	}
+}
