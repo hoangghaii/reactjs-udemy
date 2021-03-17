@@ -2,6 +2,10 @@
 .believe {
 	.paragraph {
 		width: 50%;
+
+		@include respon(tablet) {
+			width: 100%;
+		}
 	}
 
 	&__img-box {

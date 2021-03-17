@@ -1,7 +1,16 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 function Gallery(props) {
+	let numbers = [];
+
+	const initNumber = () => {
+		for (let i = 5; i <= 16; i++) {
+			numbers.push(i);
+		}
+	};
+
+	initNumber();
+
 	return (
 		<section className="gallery">
 			<div className="heading">
@@ -15,90 +24,23 @@ function Gallery(props) {
 				</h2>
 			</div>
 			<div className="gallery__container">
-				<div className="gallery__img-box gallery__img-box--1">
-					<img
-						src={process.env.PUBLIC_URL + "/images/image-5.jpg"}
-						alt="Gallery Img"
-						className="gallery__img"
-					/>
-				</div>
-				<div className="gallery__img-box gallery__img-box--2">
-					<img
-						src={process.env.PUBLIC_URL + "/images/image-6.jpg"}
-						alt="Gallery Img"
-						className="gallery__img"
-					/>
-				</div>
-				<div className="gallery__img-box gallery__img-box--3">
-					<img
-						src={process.env.PUBLIC_URL + "/images/image-7.jpg"}
-						alt="Gallery Img"
-						className="gallery__img"
-					/>
-				</div>
-				<div className="gallery__img-box gallery__img-box--4">
-					<img
-						src={process.env.PUBLIC_URL + "/images/image-8.jpg"}
-						alt="Gallery Img"
-						className="gallery__img"
-					/>
-				</div>
-				<div className="gallery__img-box gallery__img-box--5">
-					<img
-						src={process.env.PUBLIC_URL + "/images/image-9.jpg"}
-						alt="Gallery Img"
-						className="gallery__img"
-					/>
-				</div>
-				<div className="gallery__img-box gallery__img-box--6">
-					<img
-						src={process.env.PUBLIC_URL + "/images/image-10.jpg"}
-						alt="Gallery Img"
-						className="gallery__img"
-					/>
-				</div>
-				<div className="gallery__img-box gallery__img-box--7">
-					<img
-						src={process.env.PUBLIC_URL + "/images/image-11.jpg"}
-						alt="Gallery Img"
-						className="gallery__img"
-					/>
-				</div>
-				<div className="gallery__img-box gallery__img-box--8">
-					<img
-						src={process.env.PUBLIC_URL + "/images/image-12.jpg"}
-						alt="Gallery Img"
-						className="gallery__img"
-					/>
-				</div>
-				<div className="gallery__img-box gallery__img-box--9">
-					<img
-						src={process.env.PUBLIC_URL + "/images/image-13.jpg"}
-						alt="Gallery Img"
-						className="gallery__img"
-					/>
-				</div>
-				<div className="gallery__img-box gallery__img-box--10">
-					<img
-						src={process.env.PUBLIC_URL + "/images/image-14.jpg"}
-						alt="Gallery Img"
-						className="gallery__img"
-					/>
-				</div>
-				<div className="gallery__img-box gallery__img-box--11">
-					<img
-						src={process.env.PUBLIC_URL + "/images/image-15.jpg"}
-						alt="Gallery Img"
-						className="gallery__img"
-					/>
-				</div>
-				<div className="gallery__img-box gallery__img-box--12">
-					<img
-						src={process.env.PUBLIC_URL + "/images/image-16.jpg"}
-						alt="Gallery Img"
-						className="gallery__img"
-					/>
-				</div>
+				{numbers.map((number, index) => (
+					<div
+						className={`gallery__img-box gallery__img-box--${
+							index + 1
+						}`}
+						key={index}
+					>
+						<img
+							src={
+								process.env.PUBLIC_URL +
+								`/images/image-${number}.jpg`
+							}
+							alt="Gallery Img"
+							className="gallery__img"
+						/>
+					</div>
+				))}
 			</div>
 		</section>
 	);

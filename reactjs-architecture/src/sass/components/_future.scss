@@ -8,6 +8,18 @@
 		& > * {
 			width: 45%;
 		}
+
+		@include respon(land-phone) {
+			flex-direction: column;
+
+			& > *:first-child {
+				width: 90%;
+			}
+
+			& > *:last-child {
+				width: 100%;
+			}
+		}
 	}
 
 	&__content {
@@ -33,9 +45,17 @@
 			margin-top: -1rem;
 			font-size: 1.7rem;
 		}
+
+		@include respon(land-phone) {
+			justify-content: space-evenly;
+		}
 	}
 
 	&__img-box {
 		height: 40rem;
+
+		@include respon(land-phone) {
+			margin-top: 5rem;
+		}
 	}
 }
