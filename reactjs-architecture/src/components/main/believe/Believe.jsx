@@ -20,7 +20,7 @@ function Believe(props) {
 			</div>
 			<div className="believe__img-box">
 				<img
-					src="./images/image-2.jpg"
+					src={process.env.PUBLIC_URL + "/images/image-2.jpg"}
 					alt="Believe"
 					className="believe__img"
 				/>

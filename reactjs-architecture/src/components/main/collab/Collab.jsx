@@ -15,7 +15,7 @@ function Collab(props) {
 			<div className="collab__content-wrapper">
 				<div className="collab__img-box">
 					<img
-						src="./images/image-4.jpg"
+						src={process.env.PUBLIC_URL + "/images/image-4.jpg"}
 						alt="Collaborative Img"
 						className="collab__img"
 					/>

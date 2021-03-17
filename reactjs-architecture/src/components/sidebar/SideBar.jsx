@@ -6,7 +6,11 @@ function SideBar(props) {
 	return (
 		<header className="header">
 			<div className="logo-box">
-				<img src="./images/logo.png" alt="Logo" className="logo" />
+				<img
+					src={process.env.PUBLIC_URL + "/images/logo.png"}
+					alt="Logo"
+					className="logo"
+				/>
 			</div>
 
 			<Navigation />

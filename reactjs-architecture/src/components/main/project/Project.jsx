@@ -21,7 +21,7 @@ function Project(props) {
 				</div>
 				<div className="project__img-box project__img-box-1">
 					<img
-						src="./images/image-17.jpg"
+						src={process.env.PUBLIC_URL + "/images/image-17.jpg"}
 						alt="Project Img"
 						className="project__img"
 					/>
@@ -29,7 +29,7 @@ function Project(props) {
 			</div>
 			<div className="project__img-box project__img-box-2">
 				<img
-					src="./images/image-18.jpg"
+					src={process.env.PUBLIC_URL + "/images/image-18.jpg"}
 					alt="Project "
 					className="project__img"
 				/>

@@ -56,7 +56,7 @@ function Future(props) {
 				</div>
 				<div className="future__img-box">
 					<img
-						src="./images/image-3.jpg"
+						src={process.env.PUBLIC_URL + "/images/image-3.jpg"}
 						alt="Future Img"
 						className="future__img"
 					/>
