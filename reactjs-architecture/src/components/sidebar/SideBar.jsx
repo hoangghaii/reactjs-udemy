@@ -1,9 +1,9 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 import Navigation from "./Navigation/Navigation";
 
 function SideBar(props) {
-	const { isAddClass } = props;
+	const { isAddClass, onCloseMenu } = props;
 
 	const listNavLink = [
 		"About",
@@ -19,6 +19,11 @@ function SideBar(props) {
 		className += " show";
 	}
 
+	const handleCloseMenu = () => {
+		if (!onCloseMenu) return;
+		onCloseMenu();
+	};
+
 	return (
 		<header className={className}>
 			<div className="logo-box">
@@ -29,13 +34,17 @@ function SideBar(props) {
 				/>
 			</div>
 
-			<Navigation listNavLink={listNavLink} />
+			<Navigation
+				listNavLink={listNavLink}
+				handleCloseMenu={handleCloseMenu}
+			/>
 		</header>
 	);
 }
 
 SideBar.propTypes = {
 	isAddClass: PropTypes.bool,
+	onCloseMenu: PropTypes.func,
 };
 
 export default SideBar;

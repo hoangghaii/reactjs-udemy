@@ -1,7 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 function Future(props) {
+	const initCounting = () => {
+		const elements = document.querySelectorAll(".future__counter--number");
+
+		elements.forEach((element) => {
+			element.innerHTML = 0;
+		});
+	};
+
+	const countingUp = (duration) => {
+		const start = 0;
+		const elements = document.querySelectorAll(".future__counter--number");
+
+		elements.forEach((element) => {
+			const end = parseInt(element.dataset.count);
+
+			if (end === start) {
+				return;
+			} else {
+				const range = end - start;
+				let current = start;
+				const increment = start < end ? 1 : 0;
+				const stepTime = Math.abs(Math.floor(duration / range));
+
+				const timer = setInterval(function () {
+					current += increment;
+					element.innerHTML = current;
+					if (current === end) {
+						clearInterval(timer);
+					}
+				}, stepTime);
+			}
+		});
+	};
+
+	useEffect(() => {
+		countingUp(3000);
+
+		return () => {
+			initCounting();
+		};
+	}, []);
+
 	return (
 		<section className="future">
 			<div className="heading">
@@ -11,11 +53,13 @@ function Future(props) {
 					</span>
 					<span className="heading-number">02</span>
 				</div>
+
 				<h2 className="heading-2">
 					<span>Our purpose is to</span>
 					<span>redesigning our living future</span>
 				</h2>
 			</div>
+
 			<div className="future__content-wrapper">
 				<div className="future__content">
 					<p className="paragraph dropcap">
@@ -29,6 +73,7 @@ function Future(props) {
 						customer looking for something truly to their needs,
 						site and personal vision.
 					</p>
+
 					<div className="future__counter">
 						<div className="future__counter--item">
 							<span
@@ -41,6 +86,7 @@ function Future(props) {
 								Adaptive Space Projects
 							</p>
 						</div>
+
 						<div className="future__counter--item">
 							<span
 								className="future__counter--number"
@@ -54,6 +100,7 @@ function Future(props) {
 						</div>
 					</div>
 				</div>
+
 				<div className="future__img-box">
 					<img
 						src={process.env.PUBLIC_URL + "/images/image-3.jpg"}

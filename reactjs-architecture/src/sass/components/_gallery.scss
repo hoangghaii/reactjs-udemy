@@ -8,6 +8,8 @@
 	}
 
 	&__img-box {
+		cursor: pointer;
+
 		&--1 {
 			grid-column: 1/3;
 			grid-row: 1/4;

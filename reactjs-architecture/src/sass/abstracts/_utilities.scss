@@ -5,3 +5,10 @@
 	line-height: 0.65;
 	margin: 1rem 0.6rem 0 0;
 }
+
+.animated {
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}

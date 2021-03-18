@@ -1,23 +1,76 @@
 import React from "react";
-import PropTypes from "prop-types";
+import ScrollAnimation from "react-animate-on-scroll";
 import Believe from "./believe/Believe";
-import Future from "./future/Future";
 import Collab from "./collab/Collab";
+import Future from "./future/Future";
 import Gallery from "./gallery/Gallery";
 import Project from "./project/Project";
+import { Switch, Route } from "react-router-dom";
 
 function Main(props) {
 	return (
 		<main className="main">
-			<Believe />
+			<Switch>
+				<Route exact path="/about">
+					<ScrollAnimation
+						animateIn="fadeIn"
+						animateOut="fadeOut"
+						delay={1000}
+					>
+						<Believe />
+					</ScrollAnimation>
+				</Route>
 
-			<Future />
+				<Route exact path="/featured">
+					<ScrollAnimation
+						animateIn="fadeIn"
+						animateOut="fadeOut"
+						delay={1000}
+					>
+						<Future />
+					</ScrollAnimation>
+				</Route>
 
-			<Collab />
+				<Route exact path="/collaborative">
+					<ScrollAnimation
+						animateIn="fadeIn"
+						animateOut="fadeOut"
+						delay={1000}
+					>
+						<Collab />
+					</ScrollAnimation>
+				</Route>
 
-			<Gallery />
+				<Route exact path="/gallery">
+					<ScrollAnimation
+						animateIn="fadeIn"
+						animateOut="fadeOut"
+						delay={1000}
+					>
+						<Gallery />
+					</ScrollAnimation>
+				</Route>
 
-			<Project />
+				<Route exact path="/projects">
+					<ScrollAnimation
+						animateIn="fadeIn"
+						animateOut="fadeOut"
+						delay={1000}
+					>
+						<Project />
+					</ScrollAnimation>
+				</Route>
+
+				<Route exact path="/">
+					<ScrollAnimation
+						animateIn="fadeIn"
+						animateOut="fadeOut"
+						delay={1000}
+					>
+						<Believe />
+					</ScrollAnimation>
+				</Route>
+			</Switch>
 		</main>
 	);
 }
