@@ -1,8 +1,10 @@
-import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
 function Navigation(props) {
+	const pathName = useLocation().pathname;
+
 	const { listNavLink, handleCloseMenu } = props;
 
 	const closeMenu = () => {
@@ -18,7 +20,11 @@ function Navigation(props) {
 
 					return (
 						<li
-							className="nav__item"
+							className={
+								link === pathName
+									? "nav__item nav__item--active"
+									: "nav__item"
+							}
 							key={index}
 							onClick={closeMenu}
 						>

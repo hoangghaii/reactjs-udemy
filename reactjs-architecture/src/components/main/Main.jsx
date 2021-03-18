@@ -1,11 +1,11 @@
 import React from "react";
 import ScrollAnimation from "react-animate-on-scroll";
+import { Route, Switch } from "react-router-dom";
 import Believe from "./believe/Believe";
 import Collab from "./collab/Collab";
 import Future from "./future/Future";
 import Gallery from "./gallery/Gallery";
 import Project from "./project/Project";
-import { Switch, Route } from "react-router-dom";
 
 function Main(props) {
 	return (
