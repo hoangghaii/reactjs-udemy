@@ -1,0 +1,74 @@
+.btn-toggle {
+	display: block;
+	min-width: 14rem;
+	height: 5rem;
+	padding: 1.3rem 2rem;
+	overflow: hidden;
+
+	border: 2px solid #fff;
+	border-radius: 10rem;
+	background: linear-gradient(#39598a, #79d7ed);
+	cursor: pointer;
+
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+
+	transition: all 0.5s;
+
+	&:focus {
+		outline: none;
+	}
+
+	&.dark {
+		background: linear-gradient(#0e1533, #393d96);
+	}
+
+	&__group {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		transition: all 5s;
+
+		&--1 {
+			top: 0;
+
+			&.hide {
+				top: -100%;
+			}
+		}
+
+		&--2 {
+			top: -100%;
+
+			&.show {
+				top: 0;
+			}
+		}
+	}
+
+	& i.fas {
+		font-size: 2rem;
+	}
+
+	& i.fas.fa-sun {
+		color: #fed330;
+		margin-left: 1.5rem;
+		margin-right: auto;
+	}
+
+	& i.fas.fa-moon-stars {
+		color: #fff;
+		margin-right: 1.5rem;
+		margin-left: auto;
+	}
+}

@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import React from "react";
+import DarkMode from "../ui/DarkMode/DarkMode";
 import Navigation from "./Navigation/Navigation";
 
 function SideBar(props) {
-	const { isAddClass, onCloseMenu } = props;
+	const { isAddClass, onCloseMenu, onToggleTheme, theme } = props;
 
 	const listNavLink = [
 		"About",
@@ -24,20 +25,29 @@ function SideBar(props) {
 		onCloseMenu();
 	};
 
+	const handleToggleTheme = () => {
+		if (!onToggleTheme) return;
+		onToggleTheme();
+	};
+
 	return (
 		<header className={className}>
-			<div className="logo-box" title="Green Architecture">
-				<img
-					src={process.env.PUBLIC_URL + "/images/logo.png"}
-					alt="Logo"
-					className="logo"
+			<div>
+				<div className="logo-box" title="Green Architecture">
+					<img
+						src={process.env.PUBLIC_URL + "/images/logo.png"}
+						alt="Logo"
+						className="logo"
+					/>
+				</div>
+
+				<Navigation
+					listNavLink={listNavLink}
+					handleCloseMenu={handleCloseMenu}
 				/>
 			</div>
 
-			<Navigation
-				listNavLink={listNavLink}
-				handleCloseMenu={handleCloseMenu}
-			/>
+			<DarkMode theme={theme} handleToggleTheme={handleToggleTheme} />
 		</header>
 	);
 }
@@ -45,6 +55,7 @@ function SideBar(props) {
 SideBar.propTypes = {
 	isAddClass: PropTypes.bool,
 	onCloseMenu: PropTypes.func,
+	toggleTheme: PropTypes.func,
 };
 
 export default SideBar;

@@ -4,15 +4,23 @@ import React, { useEffect } from "react";
 function Logo(props) {
 	const animation1 = () => {
 		anime({
-			targets: "path",
+			targets: "path.path-1",
+			strokeDashoffset: [anime.setDashoffset, 0],
+			easing: "easeInOutSine",
+			duration: 5000,
+			delay: function (el, i) {
+				return i * 250;
+			},
+		});
+
+		anime({
+			targets: "path.path-2",
 			strokeDashoffset: [anime.setDashoffset, 0],
 			easing: "easeInOutSine",
 			duration: 4000,
 			delay: function (el, i) {
-				return i * 250;
+				return i * 2000;
 			},
-			direction: "alternate",
-			loop: true,
 		});
 	};
 
@@ -35,7 +43,8 @@ function Logo(props) {
 				stroke="none"
 			>
 				<path
-					fill="nonw"
+					className="path-1"
+					fill="none"
 					stroke="#c8a891"
 					strokeWidth="50"
 					d="M3360 4650 l0 -1290 1290 0 1290 0 0 350 0 350 -975 0 -975 0 0 -210
@@ -46,7 +55,8 @@ function Logo(props) {
 				/>
 
 				<path
-					fill="nonw"
+					className="path-2"
+					fill="none"
 					stroke="#c8a891"
 					strokeWidth="50"
 					d="M4330 4465 l0 -265 138 0 137 0 -3 125 -3 125 668 2 668 3 3 138 3
