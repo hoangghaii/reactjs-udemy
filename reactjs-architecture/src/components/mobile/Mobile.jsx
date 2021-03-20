@@ -17,7 +17,7 @@ function Mobile(props) {
 
 	return (
 		<div className={className} onClick={handleAddClass}>
-			<div className="btn-logo">
+			<div className="btn-logo" title="Green Architecture">
 				<img
 					src={process.env.PUBLIC_URL + "/images/logo-mobile.png"}
 					alt="Logo"

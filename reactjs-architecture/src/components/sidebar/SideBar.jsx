@@ -26,7 +26,7 @@ function SideBar(props) {
 
 	return (
 		<header className={className}>
-			<div className="logo-box">
+			<div className="logo-box" title="Green Architecture">
 				<img
 					src={process.env.PUBLIC_URL + "/images/logo.png"}
 					alt="Logo"
