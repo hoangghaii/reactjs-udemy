@@ -4,7 +4,7 @@ import DarkMode from "../ui/DarkMode/DarkMode";
 import Navigation from "./Navigation/Navigation";
 
 function SideBar(props) {
-	const { isAddClass, onCloseMenu, onToggleTheme, theme } = props;
+	const { isAddClass, onCloseMenu } = props;
 
 	const listNavLink = [
 		"About",
@@ -25,11 +25,6 @@ function SideBar(props) {
 		onCloseMenu();
 	};
 
-	const handleToggleTheme = () => {
-		if (!onToggleTheme) return;
-		onToggleTheme();
-	};
-
 	return (
 		<header className={className}>
 			<div>
@@ -47,7 +42,7 @@ function SideBar(props) {
 				/>
 			</div>
 
-			<DarkMode theme={theme} handleToggleTheme={handleToggleTheme} />
+			<DarkMode />
 		</header>
 	);
 }

@@ -54,6 +54,8 @@
 	&__img-box {
 		height: 40rem;
 
+		box-shadow: $shadow-dark-1;
+
 		@include respon(land-phone) {
 			margin-top: 5rem;
 		}

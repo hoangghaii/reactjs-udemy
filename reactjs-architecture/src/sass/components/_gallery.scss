@@ -10,6 +10,8 @@
 	&__img-box {
 		cursor: pointer;
 
+		box-shadow: $shadow-dark-1;
+
 		&--1 {
 			grid-column: 1/3;
 			grid-row: 1/4;

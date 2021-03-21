@@ -1,8 +1,9 @@
 .btn-toggle {
 	display: block;
 	min-width: 14rem;
-	height: 5rem;
-	padding: 1.3rem 2rem;
+	min-height: 5rem;
+	padding: 1.3rem 0;
+	margin-bottom: 5rem;
 	overflow: hidden;
 
 	border: 2px solid #fff;
@@ -13,7 +14,6 @@
 	position: relative;
 
 	display: flex;
-	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
 
@@ -35,23 +35,22 @@
 
 		position: absolute;
 		top: 0;
-		left: 0;
 
-		transition: all 5s;
+		transition: all 0.5s;
 
 		&--1 {
-			top: 0;
+			left: 0;
 
 			&.hide {
-				top: -100%;
+				left: -4.5rem;
 			}
 		}
 
 		&--2 {
-			top: -100%;
+			right: -4.5rem;
 
 			&.show {
-				top: 0;
+				right: 0;
 			}
 		}
 	}

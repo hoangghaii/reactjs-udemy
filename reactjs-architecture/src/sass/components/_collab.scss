@@ -12,8 +12,9 @@
 
 	&__img-box {
 		height: 50rem;
-
 		width: 55%;
+
+		box-shadow: $shadow-dark-1;
 
 		@include respon(land-phone) {
 			width: 100%;
