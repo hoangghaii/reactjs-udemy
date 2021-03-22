@@ -6,11 +6,68 @@ import Collab from "./collab/Collab";
 import Future from "./future/Future";
 import Gallery from "./gallery/Gallery";
 import Project from "./project/Project";
+import ReactFullpage from "@fullpage/react-fullpage";
 
 function Main(props) {
 	return (
 		<main className="main">
-			<Switch>
+			<ReactFullpage
+				scrollingSpeed={1000}
+				render={() => {
+					return (
+						<ReactFullpage.Wrapper>
+							<ScrollAnimation
+								animateIn="fadeIn"
+								animateOut="fadeOut"
+								delay={1000}
+							>
+								<Believe />
+							</ScrollAnimation>
+
+							<ScrollAnimation
+								animateIn="fadeIn"
+								animateOut="fadeOut"
+								delay={1000}
+							>
+								<Future />
+							</ScrollAnimation>
+
+							<ScrollAnimation
+								animateIn="fadeIn"
+								animateOut="fadeOut"
+								delay={1000}
+							>
+								<Collab />
+							</ScrollAnimation>
+
+							<ScrollAnimation
+								animateIn="fadeIn"
+								animateOut="fadeOut"
+								delay={1000}
+							>
+								<Gallery />
+							</ScrollAnimation>
+
+							<ScrollAnimation
+								animateIn="fadeIn"
+								animateOut="fadeOut"
+								delay={1000}
+							>
+								<Project />
+							</ScrollAnimation>
+
+							<ScrollAnimation
+								animateIn="fadeIn"
+								animateOut="fadeOut"
+								delay={1000}
+							>
+								<Believe />
+							</ScrollAnimation>
+						</ReactFullpage.Wrapper>
+					);
+				}}
+			/>
+			{/* <Switch>
 				<Route exact path="/about">
 					<ScrollAnimation
 						animateIn="fadeIn"
@@ -70,7 +127,7 @@ function Main(props) {
 						<Believe />
 					</ScrollAnimation>
 				</Route>
-			</Switch>
+			</Switch> */}
 		</main>
 	);
 }
