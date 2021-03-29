@@ -11,7 +11,7 @@ const burgerApi = {
 	},
 
 	async purchaseBurger(data) {
-		const url = "/order.json";
+		const url = "order.json";
 		try {
 			return await axiosClient.post(url, data);
 		} catch (error) {
