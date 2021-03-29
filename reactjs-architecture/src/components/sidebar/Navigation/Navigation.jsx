@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 function Navigation(props) {
 	const pathName = useLocation().pathname;
@@ -15,22 +15,34 @@ function Navigation(props) {
 	return (
 		<nav className="nav">
 			<ul className="nav__list">
+				<li onClick={closeMenu} style={{ paddingBottom: "1rem" }}>
+					<NavLink
+						exact
+						to="/"
+						activeClassName="nav__item--active"
+						className="nav__item"
+					>
+						<span className="nav__link">About</span>
+					</NavLink>
+				</li>
+
 				{listNavLink.map((navLink, index) => {
 					const link = "/" + navLink.toLowerCase();
 
 					return (
 						<li
-							className={
-								link === pathName
-									? "nav__item nav__item--active"
-									: "nav__item"
-							}
 							key={index}
 							onClick={closeMenu}
+							style={{ paddingBottom: "1rem" }}
 						>
-							<span className="nav__link">
-								<Link to={link}>{navLink}</Link>
-							</span>
+							<NavLink
+								exact
+								to={link}
+								activeClassName="nav__item--active"
+								className="nav__item"
+							>
+								<span className="nav__link">{navLink}</span>
+							</NavLink>
 						</li>
 					);
 				})}
