@@ -1,10 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navigation(props) {
-	const pathName = useLocation().pathname;
-
 	const { listNavLink, handleCloseMenu } = props;
 
 	const closeMenu = () => {
@@ -15,7 +13,7 @@ function Navigation(props) {
 	return (
 		<nav className="nav">
 			<ul className="nav__list">
-				<li onClick={closeMenu} style={{ paddingBottom: "1rem" }}>
+				{/* <li onClick={closeMenu} style={{ paddingBottom: "1rem" }}>
 					<NavLink
 						exact
 						to="/"
@@ -24,7 +22,7 @@ function Navigation(props) {
 					>
 						<span className="nav__link">About</span>
 					</NavLink>
-				</li>
+				</li> */}
 
 				{listNavLink.map((navLink, index) => {
 					const link = "/" + navLink.toLowerCase();

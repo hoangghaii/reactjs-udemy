@@ -1,5 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
+import Typed from "react-typed";
+import Tilt from "react-parallax-tilt";
 
 function Believe(props) {
 	return (
@@ -10,8 +11,17 @@ function Believe(props) {
 					<span className="heading-number">01</span>
 				</div>
 				<h1 className="heading-1">
-					<span>We Believe in</span>
-					<span>Great Architecture</span>
+					<Typed
+						strings={["<span>We Believe in</span>"]}
+						typeSpeed={30}
+						showCursor={false}
+					/>
+					<Typed
+						strings={["<span>Great Architecture</span>"]}
+						typeSpeed={30}
+						startDelay={30}
+						showCursor={false}
+					/>
 				</h1>
 				<p className="paragraph">
 					We believe in its enduring power to enhance our wellbeing,
@@ -19,11 +29,19 @@ function Believe(props) {
 				</p>
 			</div>
 			<div className="believe__img-box">
-				<img
-					src={process.env.PUBLIC_URL + "/images/image-2.jpg"}
-					alt="Believe"
-					className="believe__img"
-				/>
+				<Tilt
+					tiltMaxAngleX={5}
+					tiltMaxAngleY={5}
+					perspective={900}
+					transitionSpeed={2000}
+					gyroscope={true}
+				>
+					<img
+						src={process.env.PUBLIC_URL + "/images/image-2.jpg"}
+						alt="Believe"
+						className="believe__img"
+					/>
+				</Tilt>
 			</div>
 		</section>
 	);

@@ -1,10 +1,14 @@
-import React, { Component } from "react";
-import { NavLink, Route, Switch } from "react-router-dom";
-import NewPost from "./NewPost/NewPost";
+import React, { Component, Suspense } from "react";
+import { NavLink, Redirect, Route, Switch } from "react-router-dom";
 import "./Blog.css";
-import Posts from "./Posts/Posts";
+
+const Posts = React.lazy(() => import("./Posts/Posts"));
+const NewPost = React.lazy(() => import("./NewPost/NewPost"));
 
 class Blog extends Component {
+	state = {
+		auth: true,
+	};
 	render() {
 		return (
 			<div className="Blog">
@@ -13,7 +17,7 @@ class Blog extends Component {
 						<ul>
 							<li>
 								<NavLink
-									to="/"
+									to="/posts"
 									exact
 									activeClassName="my-active"
 									activeStyle={{
@@ -21,7 +25,7 @@ class Blog extends Component {
 										textDecoration: "underline",
 									}}
 								>
-									Home
+									Posts
 								</NavLink>
 							</li>
 							<li>
@@ -45,8 +49,28 @@ class Blog extends Component {
 				</header>
 
 				<Switch>
-					<Route path="/" exact component={Posts} />
-					<Route path="/new-post" exact component={NewPost} />
+					{this.state.auth ? (
+						<Route
+							path="/posts"
+							render={() => (
+								<Suspense fallback={<div>Loading...</div>}>
+									<Posts />
+								</Suspense>
+							)}
+						/>
+					) : null}
+					<Route
+						path="/new-post"
+						render={() => (
+							<Suspense fallback={<div>Loading...</div>}>
+								<NewPost />
+							</Suspense>
+						)}
+					/>
+
+					<Route render={() => <h1>Not Found</h1>} />
+					<Redirect from="/" to="/posts" />
+					<Route path="/" component={Posts} />
 				</Switch>
 			</div>
 		);

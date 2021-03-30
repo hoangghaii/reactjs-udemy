@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-
+import Typed from "react-typed";
 function Future(props) {
 	const initCounting = () => {
 		const elements = document.querySelectorAll(".future__counter--number");
@@ -55,8 +55,17 @@ function Future(props) {
 				</div>
 
 				<h2 className="heading-2">
-					<span>Our purpose is to</span>
-					<span>redesigning our living future</span>
+					<Typed
+						strings={["<span>Our purpose is to</span>"]}
+						typeSpeed={30}
+						showCursor={false}
+					/>
+					<Typed
+						strings={["<span>redesigning our living future</span>"]}
+						typeSpeed={30}
+						startDelay={60}
+						showCursor={false}
+					/>
 				</h2>
 			</div>
 

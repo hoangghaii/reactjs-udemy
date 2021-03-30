@@ -1,76 +1,82 @@
-import React from "react";
-import ScrollAnimation from "react-animate-on-scroll";
-import { Route, Switch } from "react-router-dom";
-import Believe from "./believe/Believe";
-import Collab from "./collab/Collab";
-import Future from "./future/Future";
-import Gallery from "./gallery/Gallery";
-import Project from "./project/Project";
+import React, { lazy, Suspense } from "react";
+// import ScrollAnimation from "react-animate-on-scroll";
+import { Redirect, Route, Switch } from "react-router-dom";
+import Loading from "../loading/Loading";
+
+const Believe = lazy(() => import("./believe/Believe"));
+const Collab = lazy(() => import("./collab/Collab"));
+const Future = lazy(() => import("./future/Future"));
+const Gallery = lazy(() => import("./gallery/Gallery"));
+const Project = lazy(() => import("./project/Project"));
 
 function Main(props) {
 	return (
 		<main className="main">
-			<Switch>
-				<Route exact path="/about">
-					<ScrollAnimation
+			<Suspense fallback={<Loading />}>
+				<Switch>
+					<Route path="/about">
+						{/* <ScrollAnimation
 						animateIn="fadeIn"
 						animateOut="fadeOut"
 						delay={1000}
-					>
+					> */}
 						<Believe />
-					</ScrollAnimation>
-				</Route>
+						{/* </ScrollAnimation> */}
+					</Route>
 
-				<Route exact path="/featured">
-					<ScrollAnimation
+					<Route path="/featured">
+						{/* <ScrollAnimation
 						animateIn="fadeIn"
 						animateOut="fadeOut"
 						delay={1000}
-					>
+					> */}
 						<Future />
-					</ScrollAnimation>
-				</Route>
+						{/* </ScrollAnimation> */}
+					</Route>
 
-				<Route exact path="/collaborative">
-					<ScrollAnimation
+					<Route path="/collaborative">
+						{/* <ScrollAnimation
 						animateIn="fadeIn"
 						animateOut="fadeOut"
 						delay={1000}
-					>
+					> */}
 						<Collab />
-					</ScrollAnimation>
-				</Route>
+						{/* </ScrollAnimation> */}
+					</Route>
 
-				<Route exact path="/gallery">
-					<ScrollAnimation
+					<Route path="/gallery">
+						{/* <ScrollAnimation
 						animateIn="fadeIn"
 						animateOut="fadeOut"
 						delay={1000}
-					>
+					> */}
 						<Gallery />
-					</ScrollAnimation>
-				</Route>
+						{/* </ScrollAnimation> */}
+					</Route>
 
-				<Route exact path="/projects">
-					<ScrollAnimation
+					<Route path="/projects">
+						{/* <ScrollAnimation
 						animateIn="fadeIn"
 						animateOut="fadeOut"
 						delay={1000}
-					>
+					> */}
 						<Project />
-					</ScrollAnimation>
-				</Route>
+						{/* </ScrollAnimation> */}
+					</Route>
 
-				<Route exact path="/">
-					<ScrollAnimation
+					<Route path="/">
+						{/* <ScrollAnimation
 						animateIn="fadeIn"
 						animateOut="fadeOut"
 						delay={1000}
-					>
+					> */}
 						<Believe />
-					</ScrollAnimation>
-				</Route>
-			</Switch>
+						{/* </ScrollAnimation> */}
+					</Route>
+
+					<Redirect from="/" to="/about" />
+				</Switch>
+			</Suspense>
 		</main>
 	);
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import Typed from "react-typed";
 
 function Gallery(props) {
 	let numbers = [];
@@ -18,9 +19,19 @@ function Gallery(props) {
 					<span className="heading-small">Gallery Products</span>
 					<span className="heading-number">04</span>
 				</div>
+
 				<h2 className="heading-2">
-					<span>Our products serve lives</span>
-					<span>and our future</span>
+					<Typed
+						strings={["<span>Our products serve lives</span>"]}
+						typeSpeed={30}
+						showCursor={false}
+					/>
+					<Typed
+						strings={["<span>and our future</span>"]}
+						typeSpeed={30}
+						startDelay={60}
+						showCursor={false}
+					/>
 				</h2>
 			</div>
 			<div className="gallery__container">

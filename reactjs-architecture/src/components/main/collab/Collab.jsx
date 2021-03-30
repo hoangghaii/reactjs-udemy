@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Typed from "react-typed";
 
 function Collab(props) {
 	return (
@@ -22,8 +23,15 @@ function Collab(props) {
 				</div>
 				<div className="collab__content">
 					<h3 className="heading-3">
-						Great design is an extension of who we are
+						<Typed
+							strings={[
+								"Great design is an extension of who we are",
+							]}
+							typeSpeed={30}
+							showCursor={false}
+						/>
 					</h3>
+
 					<p className="paragraph">
 						As architects and designers we work in a creative and
 						collaborative studio environment. The design process

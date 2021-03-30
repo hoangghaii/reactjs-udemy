@@ -6,7 +6,13 @@ import Navigation from "./Navigation/Navigation";
 function SideBar(props) {
 	const { isAddClass, onCloseMenu } = props;
 
-	const listNavLink = ["Projects", "Collaborative", "Gallery", "Featured"];
+	const listNavLink = [
+		"About",
+		"Projects",
+		"Collaborative",
+		"Gallery",
+		"Featured",
+	];
 
 	let className = "header";
 
