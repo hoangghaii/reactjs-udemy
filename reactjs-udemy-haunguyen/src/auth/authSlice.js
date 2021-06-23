@@ -44,15 +44,24 @@ const userSlice = createSlice({
 			state.current = {};
 		},
 	},
-	extraReducers: {
-		[register.fulfilled]: (state, action) => {
-			state.current = action.payload;
-		},
-
-		[login.fulfilled]: (state, action) => {
-			state.current = action.payload;
-		},
+	extraReducers: (builder) => {
+		builder
+			.addCase(register.fulfilled, (state, action) => {
+				state.current = action.payload;
+			})
+			.addCase(login.fulfilled, (state, action) => {
+				state.current = action.payload;
+			});
 	},
+	// extraReducers: {
+	// 	[register.fulfilled]: (state, action) => {
+	// 		state.current = action.payload;
+	// 	},
+
+	// 	[login.fulfilled]: (state, action) => {
+	// 		state.current = action.payload;
+	// 	},
+	// },
 });
 
 const { actions, reducer } = userSlice;
